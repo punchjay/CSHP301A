@@ -1,4 +1,4 @@
-﻿// Exercise 03.1 
+﻿// Exercise 03.2 
 // Gibble, Jay ejg2
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,36 +10,36 @@ namespace CanRackUnitTest
 
     public class CanRackUnitTest
     {
-        private CanRack rack;
+        private CanRack canRack;
 
         [TestInitialize]
         public void CreateRack()
         {
-            rack = new CanRack();
+            canRack = new CanRack();
         }
 
         [TestMethod]
         public void NewRackIsFull()
         {
-            Assert.IsTrue(rack.IsFull("Regular"));
-            Assert.IsTrue(rack.IsFull("Orange"));
-            Assert.IsTrue(rack.IsFull("Lemon"));
+            Assert.IsTrue(canRack.IsFullEnum(Flavor.LEMON));
+            Assert.IsTrue(canRack.IsFullEnum(Flavor.ORANGE));
+            Assert.IsTrue(canRack.IsFullEnum(Flavor.REGULAR));
         }
 
         [TestMethod]
         public void UseBadFlavor()
         {
-            rack.RemoveACanOf("bad flavor");
+            canRack.RemoveACanOf("bad flavor");
         }
 
         [TestMethod]
         public void EmptyRackOfRegular()
         {
             int counter = 0;
-            while (!rack.IsEmpty("Regular"))
+            while (!canRack.IsEmptyEnum(Flavor.LEMON))
             {
                 counter++;
-                rack.RemoveACanOf("Regular");
+                canRack.RemoveACanOfEnum(Flavor.LEMON);
             }
 
             Assert.IsTrue(counter == 3);
