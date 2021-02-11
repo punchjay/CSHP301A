@@ -12,7 +12,6 @@ namespace VendingMachine
     {
         private const int EMPTYBIN = 0;
         private const int BINSIZE = 3;
-
         private int regular = EMPTYBIN;
         private int orange = EMPTYBIN;
         private int lemon = EMPTYBIN;
@@ -24,30 +23,36 @@ namespace VendingMachine
             FillTheCanRack();
         }
 
-        //  This method adds a can of the specified flavor to the rack.  
         public void AddACanOf(string FlavorOfCanToBeAdded)
         {
             FlavorOfCanToBeAdded = FlavorOfCanToBeAdded.ToUpper();
             Debug.WriteLine($"adding a can of {FlavorOfCanToBeAdded} flavored soda to the rack");
-            if (FlavorOfCanToBeAdded == "REGULAR") regular = regular + 1;
-            else if (FlavorOfCanToBeAdded == "ORANGE") orange = orange + 1;
-            else if (FlavorOfCanToBeAdded == "LEMON") lemon = lemon + 1;
+            if (FlavorOfCanToBeAdded == "REGULAR") regular = regular++;
+            else if (FlavorOfCanToBeAdded == "ORANGE") orange = orange++;
+            else if (FlavorOfCanToBeAdded == "LEMON") lemon = lemon++;
             else Debug.WriteLine($"Error: attempt to add an unknown flavor {FlavorOfCanToBeAdded} to the rack");
         }
 
-        //  This method will remove a can of the specified flavor from the rack.
+        public void AddACanOfEnum(Flavor FlavorOfCanToBeAdded)
+        {
+            AddACanOf(FlavorOfCanToBeAdded.ToString());
+        }
+
         public void RemoveACanOf(string FlavorOfCanToBeRemoved)
         {
             FlavorOfCanToBeRemoved = FlavorOfCanToBeRemoved.ToUpper();
             Debug.WriteLine($"removing a can of {FlavorOfCanToBeRemoved} flavored soda from the rack");
-            if (FlavorOfCanToBeRemoved == "REGULAR") regular = regular - 1;
-            else if (FlavorOfCanToBeRemoved == "ORANGE") orange = orange - 1;
-            else if (FlavorOfCanToBeRemoved == "LEMON") lemon = lemon - 1;
+            if (FlavorOfCanToBeRemoved == "REGULAR") regular = regular++;
+            else if (FlavorOfCanToBeRemoved == "ORANGE") orange = orange++;
+            else if (FlavorOfCanToBeRemoved == "LEMON") lemon = lemon++;
             else Debug.WriteLine($"Error: attempt to remove an unknown flavor {FlavorOfCanToBeRemoved} from the rack");
-
         }
 
-        //  This method will fill the can rack.
+        public void RemoveACanOfEnum(Flavor FlavorOfCanToBeAdded)
+        {
+            AddACanOf(FlavorOfCanToBeAdded.ToString());
+        }
+
         public void FillTheCanRack()
         {
             Debug.WriteLine("Filling the can rack");
@@ -56,8 +61,6 @@ namespace VendingMachine
             lemon = BINSIZE;
         }
 
-
-        //  This public void will empty the rack of a given flavor.
         public void EmptyCanRackOf(string FlavorOfBinToBeEmptied)
         {
             FlavorOfBinToBeEmptied = FlavorOfBinToBeEmptied.ToUpper();
@@ -68,8 +71,6 @@ namespace VendingMachine
             else Debug.WriteLine($"Error: attempt to empty rack of unknown flavor {FlavorOfBinToBeEmptied}");
         }
 
-        // OPTIONAL – returns true if the rack is full of a specified flavor
-        // false otherwise
         public Boolean IsFull(string FlavorOfBinToCheck)
         {
             FlavorOfBinToCheck = FlavorOfBinToCheck.ToUpper();
@@ -83,8 +84,6 @@ namespace VendingMachine
 
         }
 
-        // OPTIONAL – return true if the rack is empty of a specified flavor
-        // false otherwise 
         public Boolean IsEmpty(string FlavorOfBinToCheck)
         {
             FlavorOfBinToCheck = FlavorOfBinToCheck.ToUpper();
