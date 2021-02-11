@@ -8,7 +8,7 @@ namespace VendingMachine
     {
         public static void Main(string[] args)
         {
-            PurchasePrice initialPrice = new PurchasePrice(0.35M);
+            PurchasePrice initialPrice = new PurchasePrice(0.55M);
             decimal sodaPrice = initialPrice.PriceDecimal;
             CanRack sodaRack;
 

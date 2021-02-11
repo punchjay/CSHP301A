@@ -16,7 +16,7 @@ namespace StringUnitTest
         [TestMethod]
         public void StringTest01()
         {
-            strReader = new StringReader("0.55");
+            strReader = new StringReader("0.75");
             Console.SetOut(strWriter);
             Console.SetIn(strReader);
 
@@ -25,8 +25,8 @@ namespace StringUnitTest
             string result = strWriter.ToString();
 
             Assert.IsTrue(result.Contains("Welcome to the .NET C# Soda Vending Machine."));
-            Assert.IsTrue(result.Contains("Please insert $0.35 cents:"));
-            Assert.IsTrue(result.Contains("You have inserted $0.55 cents"));
+            Assert.IsTrue(result.Contains("Please insert $0.55 cents:"));
+            Assert.IsTrue(result.Contains("You have inserted $0.75 cents"));
             Assert.IsTrue(result.Contains("Thanks! Here is your soda. Your change is $0.20 cents."));
         }
 
@@ -43,7 +43,7 @@ namespace StringUnitTest
 
             Assert.IsTrue(
                 result.Contains("You have inserted $0.10 cents") &&
-                result.Contains("Please enter $0.25 cents more to complete your transaction."));
+                result.Contains("Please enter $0.45 cents more to complete your transaction."));
         }
 
         [TestMethod]

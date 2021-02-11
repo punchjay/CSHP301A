@@ -1,4 +1,4 @@
-﻿// Exercise 03.1 
+﻿// Exercise 03.2
 // Gibble, Jay ejg2
 using System;
 using System.Diagnostics;
@@ -17,8 +17,6 @@ namespace VendingMachine
         private int orange = EMPTYBIN;
         private int lemon = EMPTYBIN;
 
-        private const int DUMMYARGUMENT = 0;
-
         // Constructor for a can rack. The rack starts out full
         // (i.e., BINSIZE cans of each flavor).
         public CanRack()
@@ -34,7 +32,7 @@ namespace VendingMachine
             if (FlavorOfCanToBeAdded == "REGULAR") regular = regular + 1;
             else if (FlavorOfCanToBeAdded == "ORANGE") orange = orange + 1;
             else if (FlavorOfCanToBeAdded == "LEMON") lemon = lemon + 1;
-            else Debug.WriteLine($"Error: attempt to add an unknown flavor {0} to the rack");
+            else Debug.WriteLine($"Error: attempt to add an unknown flavor {FlavorOfCanToBeAdded} to the rack");
         }
 
         //  This method will remove a can of the specified flavor from the rack.
@@ -45,7 +43,7 @@ namespace VendingMachine
             if (FlavorOfCanToBeRemoved == "REGULAR") regular = regular - 1;
             else if (FlavorOfCanToBeRemoved == "ORANGE") orange = orange - 1;
             else if (FlavorOfCanToBeRemoved == "LEMON") lemon = lemon - 1;
-            else Debug.WriteLine("Error: attempt to remove an unknown flavor {FlavorOfCanToBeRemoved} from the rack");
+            else Debug.WriteLine($"Error: attempt to remove an unknown flavor {FlavorOfCanToBeRemoved} from the rack");
 
         }
 
@@ -76,11 +74,11 @@ namespace VendingMachine
         {
             FlavorOfBinToCheck = FlavorOfBinToCheck.ToUpper();
             Boolean result = false;
-            Debug.WriteLine("Checking if can rack is full of flavor {0}", FlavorOfBinToCheck, DUMMYARGUMENT);
+            Debug.WriteLine($"Checking if can rack is full of flavor {FlavorOfBinToCheck}");
             if (FlavorOfBinToCheck == "REGULAR") result = regular == BINSIZE;
             else if (FlavorOfBinToCheck == "ORANGE") result = orange == BINSIZE;
             else if (FlavorOfBinToCheck == "LEMON") result = lemon == BINSIZE;
-            else Debug.WriteLine("Error: attempt to check status of unknown flavor {0}", FlavorOfBinToCheck, DUMMYARGUMENT);
+            else Debug.WriteLine($"Error: attempt to check status of unknown flavor {FlavorOfBinToCheck}");
             return result;
 
         }
@@ -91,11 +89,11 @@ namespace VendingMachine
         {
             FlavorOfBinToCheck = FlavorOfBinToCheck.ToUpper();
             Boolean result = false;
-            Console.WriteLine("Checking if can rack is empty of flavor {0}", FlavorOfBinToCheck, DUMMYARGUMENT);
+            Console.WriteLine($"Checking if can rack is empty of flavor {FlavorOfBinToCheck}");
             if (FlavorOfBinToCheck == "REGULAR") result = regular == EMPTYBIN;
             else if (FlavorOfBinToCheck == "ORANGE") result = orange == EMPTYBIN;
             else if (FlavorOfBinToCheck == "LEMON") result = lemon == EMPTYBIN;
-            else Debug.WriteLine("Error: attempt to check rack status of unknown flavor {0}", FlavorOfBinToCheck, DUMMYARGUMENT);
+            else Debug.WriteLine($"Error: attempt to check rack status of unknown flavor {FlavorOfBinToCheck}");
             return result;
         }
     }
