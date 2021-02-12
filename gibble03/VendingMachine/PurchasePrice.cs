@@ -13,22 +13,24 @@ namespace VendingMachine
             price = 0M;
         }
 
-        //public PurchasePrice(int initialPrice)
-        //{
-        //    Price = initialPrice;
-        //}
+        [Obsolete("This constructor is obsolete.", false)]
+        public PurchasePrice(int initialPrice)
+        {
+            Price = initialPrice;
+        }
 
-        //public int Price
-        //{
-        //    get
-        //    {
-        //        return (int)(price * 100);
-        //    }
-        //    set
-        //    {
-        //        price = value / 100M;
-        //    }
-        //}
+        [Obsolete("This property is obsolete.", false)]
+        public int Price
+        {
+            get
+            {
+                return (int)(price * 100);
+            }
+            set
+            {
+                price = value / 100M;
+            }
+        }
 
         public PurchasePrice(decimal initialPrice)
         {

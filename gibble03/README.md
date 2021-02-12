@@ -1,6 +1,6 @@
 # Exercise 3 - Gibble Jay ejg2
 
-- Included is Path Core + Test Automation for CanRack, and updated PurchasePrice
+- Included is Core Path 3.1, 3.2 + Test Automation 3.1, 3.2 for CanRack, and updated PurchasePrice
 
 
 
