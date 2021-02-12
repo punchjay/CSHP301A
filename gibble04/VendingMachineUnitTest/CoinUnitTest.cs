@@ -1,4 +1,4 @@
-﻿// Exercise 03.3
+﻿// Exercise 04
 // Gibble, Jay ejg2
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VendingMachineCoin;

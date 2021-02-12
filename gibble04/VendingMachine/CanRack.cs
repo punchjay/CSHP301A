@@ -1,4 +1,4 @@
-﻿// Exercise 03.2
+﻿// Exercise 04
 // Gibble, Jay ejg2
 using System;
 using System.Diagnostics;
@@ -9,6 +9,7 @@ namespace VendingMachine
     {
         private const int EMPTYBIN = 0;
         private const int BINSIZE = 3;
+        private int[] rack = new int[Enum.GetValues(typeof(Flavor)).Length];
         private int regular = EMPTYBIN;
         private int orange = EMPTYBIN;
         private int lemon = EMPTYBIN;
@@ -24,6 +25,7 @@ namespace VendingMachine
             regular = BINSIZE;
             orange = BINSIZE;
             lemon = BINSIZE;
+            Console.WriteLine(rack[(int)Flavor.LEMON]);
         }
 
         public void AddACanOf(string FlavorOfCanToBeAdded)

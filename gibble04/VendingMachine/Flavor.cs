@@ -1,4 +1,4 @@
-﻿// Exercise 03.2
+﻿// Exercise 04
 // Gibble, Jay ejg2
 
 namespace VendingMachine
