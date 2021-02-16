@@ -1,4 +1,4 @@
-﻿// Exercise 04
+﻿// Exercise 04.1
 // Gibble, Jay ejg2
 using System;
 using System.Diagnostics;
@@ -26,6 +26,7 @@ namespace VendingMachine
 
         public void FillTheCanRack()
         {
+            //2.4
             foreach (int flavorValue in Enum.GetValues(typeof(Flavor)))
             {
                 rack[flavorValue] = BINSIZE;
@@ -33,18 +34,25 @@ namespace VendingMachine
 
             Debug.WriteLine("Filling the can rack");
 
-            regular = BINSIZE;
-            orange = BINSIZE;
-            lemon = BINSIZE;
-            //Console.WriteLine(rack[(int)Flavor.LEMON]);
+            // breaks unit tests for NewRackIsFull() and EmptyRackOfRegular()
+            //regular = BINSIZE;
+            //orange = BINSIZE;
+            //lemon = BINSIZE;
         }
 
         //2.3 write out the contents of rack array. For example, one flavor per line with the flavor name and
         // the number of cans of soda of that flavor. In a real system, this function would probably be in a
         // separate class, and the CanRack would export this information as strings. We’re doing it this way
         // for the sake of the simplicity of the exercise.
-        public void DisplayCanRack() { 
-        
+        public void DisplayCanRack() {
+            Console.WriteLine("Here are your soda flavor options:");
+
+            foreach (string flavorName in Enum.GetNames(typeof(Flavor)))
+            {
+                Flavor flavorEnumeral = (Flavor)Enum.Parse(typeof(Flavor), flavorName);
+                int flavorIndex = (int)flavorEnumeral;
+                Console.WriteLine($"{flavorName} - {rack[flavorIndex]}");
+            }
         }
 
         public void AddACanOf(string FlavorOfCanToBeAdded)
