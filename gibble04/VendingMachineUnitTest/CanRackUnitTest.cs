@@ -21,9 +21,9 @@ namespace CanRackUnitTest
         [TestMethod]
         public void NewRackIsFull()
         {
-            Assert.IsTrue(canRack.IsFullEnum(Flavor.LEMON));
-            Assert.IsTrue(canRack.IsFullEnum(Flavor.ORANGE));
-            Assert.IsTrue(canRack.IsFullEnum(Flavor.REGULAR));
+            Assert.IsTrue(canRack.IsFull(Flavor.LEMON));
+            Assert.IsTrue(canRack.IsFull(Flavor.ORANGE));
+            Assert.IsTrue(canRack.IsFull(Flavor.REGULAR));
         }
 
         [TestMethod]
@@ -39,7 +39,7 @@ namespace CanRackUnitTest
             while (!canRack.IsEmpty(Flavor.LEMON))
             {
                 counter++;
-                canRack.RemoveACanOfEnum(Flavor.LEMON);
+                canRack.RemoveACanOf(Flavor.LEMON);
             }
 
             Assert.IsTrue(counter == 3);

@@ -7,9 +7,14 @@ namespace VendingMachine
 {
     public class CanRack
     {
+
+        //2.1 Create an array of integers representing the number of cans in the rack indexed by the flavors
+        // The Enum.GetValues().Length value represents the number of flavors (i.e., values in the type flavors).
+        private int[] rack = new int[Enum.GetValues(typeof(Flavor)).Length];
+
         private const int EMPTYBIN = 0;
         private const int BINSIZE = 3;
-        private int[] rack = new int[Enum.GetValues(typeof(Flavor)).Length];
+
         private int regular = EMPTYBIN;
         private int orange = EMPTYBIN;
         private int lemon = EMPTYBIN;
@@ -21,11 +26,25 @@ namespace VendingMachine
 
         public void FillTheCanRack()
         {
+            foreach (int flavorValue in Enum.GetValues(typeof(Flavor)))
+            {
+                rack[flavorValue] = BINSIZE;
+            }
+
             Debug.WriteLine("Filling the can rack");
+
             regular = BINSIZE;
             orange = BINSIZE;
             lemon = BINSIZE;
-            Console.WriteLine(rack[(int)Flavor.LEMON]);
+            //Console.WriteLine(rack[(int)Flavor.LEMON]);
+        }
+
+        //2.3 write out the contents of rack array. For example, one flavor per line with the flavor name and
+        // the number of cans of soda of that flavor. In a real system, this function would probably be in a
+        // separate class, and the CanRack would export this information as strings. We’re doing it this way
+        // for the sake of the simplicity of the exercise.
+        public void DisplayCanRack() { 
+        
         }
 
         public void AddACanOf(string FlavorOfCanToBeAdded)
@@ -67,7 +86,7 @@ namespace VendingMachine
             }
         }
 
-        public void RemoveACanOfEnum(Flavor FlavorOfCanToBeRemoved)
+        public void RemoveACanOf(Flavor FlavorOfCanToBeRemoved)
         {
             RemoveACanOf(FlavorOfCanToBeRemoved.ToString());
         }
@@ -98,7 +117,7 @@ namespace VendingMachine
             return result;
         }
 
-        public Boolean IsFullEnum(Flavor FlavorOfBinToBeChecked)
+        public Boolean IsFull(Flavor FlavorOfBinToBeChecked)
         {
             return IsFull(FlavorOfBinToBeChecked.ToString());
         }

@@ -28,7 +28,7 @@ namespace VendingMachine
             else if  (valueInsertedOver)
             {
                 sodaRack = new CanRack();
-                sodaRack.RemoveACanOfEnum(Flavor.LEMON);
+                sodaRack.RemoveACanOf(Flavor.LEMON);
                 sodaRack.AddACanOf(Flavor.LEMON);
                 Console.WriteLine($"Thanks! Here is your soda. Your change is {valueRemaining * -1:c} cents."); 
             }
