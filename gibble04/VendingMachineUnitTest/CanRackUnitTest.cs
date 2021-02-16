@@ -1,7 +1,7 @@
 ﻿// Exercise 04
 // Gibble, Jay ejg2
-using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics;
 using VendingMachine;
 
 namespace CanRackUnitTest

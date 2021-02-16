@@ -3,7 +3,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VendingMachine;
 
-namespace PurchasePriceUnitTest 
+namespace PurchasePriceUnitTest
 {
     [TestClass]
     public class PurchasePriceUnitTest
