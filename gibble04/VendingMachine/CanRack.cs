@@ -45,7 +45,7 @@ namespace VendingMachine
             }
         }
 
-        public void AddACanOfEnum(Flavor FlavorOfCanToBeAdded)
+        public void AddACanOf(Flavor FlavorOfCanToBeAdded)
         {
             AddACanOf(FlavorOfCanToBeAdded.ToString());
         }
@@ -81,7 +81,7 @@ namespace VendingMachine
             else Debug.WriteLine($"Error: attempt to empty rack of unknown flavor {FlavorOfBinToBeEmptied}");
         }
 
-        public void EmptyCanRackOfEnum(Flavor FlavorOfBinToBeEmptied)
+        public void EmptyCanRackOf(Flavor FlavorOfBinToBeEmptied)
         {
             EmptyCanRackOf(FlavorOfBinToBeEmptied.ToString());
         }
@@ -115,7 +115,7 @@ namespace VendingMachine
             return result;
         }
 
-        public Boolean IsEmptyEnum(Flavor FlavorOfBinToBeChecked)
+        public Boolean IsEmpty(Flavor FlavorOfBinToBeChecked)
         {
             return IsEmpty(FlavorOfBinToBeChecked.ToString());
         }

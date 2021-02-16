@@ -29,7 +29,7 @@ namespace VendingMachine
             {
                 sodaRack = new CanRack();
                 sodaRack.RemoveACanOfEnum(Flavor.LEMON);
-                sodaRack.AddACanOfEnum(Flavor.LEMON);
+                sodaRack.AddACanOf(Flavor.LEMON);
                 Console.WriteLine($"Thanks! Here is your soda. Your change is {valueRemaining * -1:c} cents."); 
             }
         }

@@ -36,7 +36,7 @@ namespace CanRackUnitTest
         public void EmptyRackOfRegular()
         {
             int counter = 0;
-            while (!canRack.IsEmptyEnum(Flavor.LEMON))
+            while (!canRack.IsEmpty(Flavor.LEMON))
             {
                 counter++;
                 canRack.RemoveACanOfEnum(Flavor.LEMON);
