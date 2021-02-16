@@ -8,7 +8,7 @@ namespace VendingMachine
         public readonly Flavor TheFlavor = Flavor.REGULAR;
 
         public Can()
-        { 
+        {
         }
 
         public Can(Flavor AFlavor)

@@ -39,11 +39,11 @@ namespace VendingMachine
 
         public decimal PriceDecimal
         {
-            get 
+            get
             {
-                return price; 
+                return price;
             }
-            set 
+            set
             {
                 price = value;
             }
