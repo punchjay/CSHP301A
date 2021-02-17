@@ -1,8 +1,8 @@
-﻿// Exercise 04
+﻿// Exercise 4.2
 // Gibble, Jay ejg2
 using System;
 
-namespace VendingMachineCoin
+namespace VendingMachine
 {
     public class Coin
     {
