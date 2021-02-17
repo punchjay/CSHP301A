@@ -14,6 +14,7 @@ namespace StringUnitTest
         readonly StringWriter strWriter = new StringWriter();
 
         [TestMethod]
+        [Ignore]
         public void StringTest01()
         {
             strReader = new StringReader("0.75");
@@ -31,6 +32,7 @@ namespace StringUnitTest
         }
 
         [TestMethod]
+        [Ignore]
         public void StringTest02()
         {
             strReader = new StringReader("0.10");
@@ -47,6 +49,7 @@ namespace StringUnitTest
         }
 
         [TestMethod]
+        [Ignore]
         public void StringTest03()
         {
             strReader = new StringReader("101");

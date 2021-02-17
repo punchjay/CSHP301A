@@ -8,7 +8,7 @@ namespace VendingMachine
     {
         public static void Main(string[] args)
         {
-            PurchasePrice initialPrice = new PurchasePrice(0.55M);
+            PurchasePrice initialPrice = new PurchasePrice(0.35M);
             decimal sodaPrice = initialPrice.PriceDecimal;
             CanRack sodaRack = new CanRack();
 
@@ -19,27 +19,47 @@ namespace VendingMachine
             do
             {
                 sodaRack.DisplayCanRack();
-                Console.Write($"Please insert {sodaPrice:c} cents: ");
+                Console.Write("Please insert {0:c} worth of coins: ", sodaPrice);
 
-                decimal valueInserted = decimal.Parse(Console.ReadLine());
-                decimal valueRemaining = sodaPrice - valueInserted;
-                bool valueInsertedUnder = valueInserted < sodaPrice;
-                bool valueInsertedHigh = valueInserted > 1M;
-                bool valueInsertedOver = valueInserted >= sodaPrice;
-
-                Console.WriteLine($"You have inserted {valueInserted:c} cents.");
-
-                if (valueInsertedUnder) Console.WriteLine($"Please enter {valueRemaining:c} cents more to complete your transaction.");
-                else if (valueInsertedHigh) Console.WriteLine($"Please enter less than a dollar to complete your transaction.");
-                else if (valueInsertedOver)
+                decimal totalValueInserted = 0M;
+                while (totalValueInserted < sodaPrice)
                 {
-                    sodaRack.RemoveACanOf(Flavor.LEMON);
-                    //sodaRack.AddACanOf(Flavor.LEMON);
-                    Console.WriteLine($"Thanks! Here is your soda. Your change is {valueRemaining * -1:c} cents.");
-                    Console.Write("Exit the vending machine? (y/n): ");
-                    string response = Console.ReadLine();
-                    timeToExit = response.Trim().ToUpper().StartsWith("Y");
+                    // get the coin inserted
+                    string coinNameInserted = Console.ReadLine().ToUpper();
+                    Coin coinInserted = new Coin(coinNameInserted);
+                    Console.WriteLine("You have inserted a {0} worth {1:c}", coinInserted, coinInserted.ValueOf);
+
+                    // running total of the value of the coins inserted
+                    totalValueInserted += coinInserted.ValueOf;
+                    Console.WriteLine("Total value inserted is {0:c}", totalValueInserted);
                 }
+
+                // select a flavor of soda
+                Boolean canDispensed = false;
+                while (!canDispensed)
+                {
+                    Console.Write("What flavor would you like? : ");
+                    string flavorName = Console.ReadLine().ToUpper();
+
+                    // oooh, this looks like trouble. Why?
+                    Flavor flavor = (Flavor)Enum.Parse(typeof(Flavor), flavorName);
+
+                    if (!sodaRack.IsEmpty(flavor))
+                    {
+                        sodaRack.RemoveACanOf(flavor);
+                        Console.WriteLine("Thanks, here is your can of {0}.", flavor);
+                        canDispensed = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("We are out of {0}", flavor);
+                    }
+                }
+
+                Console.Write("Exit the vending machine? (y/n): ");
+                string response = Console.ReadLine();
+                timeToExit = response.Trim().ToUpper().StartsWith("Y");
+
             } while (!timeToExit);
         }
     }
