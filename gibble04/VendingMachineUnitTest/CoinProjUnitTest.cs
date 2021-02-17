@@ -1,9 +1,9 @@
-﻿// Exercise 4
+﻿// Exercise 04
 // Gibble, Jay ejg2
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using VendingMachine;
+using VendingMachineCoin;
 
-namespace VendingMachineUnitTest
+namespace VendingMachineCoinUnitTest
 {
     [TestClass]
 

@@ -1,4 +1,4 @@
-﻿// Exercise 4.2
+﻿// Exercise 4
 // Gibble, Jay ejg2
 using System;
 
