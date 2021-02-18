@@ -34,7 +34,6 @@ namespace VendingMachine
 
             Debug.WriteLine("Filling the can rack");
 
-            // breaks unit tests for NewRackIsFull() and EmptyRackOfRegular()
             //regular = BINSIZE;
             //orange = BINSIZE;
             //lemon = BINSIZE;

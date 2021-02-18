@@ -75,7 +75,6 @@ namespace VendingMachineCoin
             }
         }
 
-
         // use Enum.GetName() with a private Denomination instance variable
         // to produce a string
         public override string ToString()

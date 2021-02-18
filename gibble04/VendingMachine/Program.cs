@@ -33,7 +33,7 @@ namespace VendingMachine
                     Console.WriteLine($"Total value inserted is {totalValueInserted:c}");
                 }
 
-                Boolean canDispensed = false;
+                bool canDispensed = false;
                 while (!canDispensed)
                 {
                     Console.Write("What flavor would you like? : ");
