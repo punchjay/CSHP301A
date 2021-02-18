@@ -16,7 +16,7 @@ namespace VendingMachine
 
             // 2.6 - 2.7 
             // TODO: this broke string tests in StringUnitTest.cs, marked as [IGNORE], loop back to fix
-            Boolean timeToExit = false;
+            bool timeToExit;
             do
             {
                 sodaRack.DisplayCanRack();
@@ -25,17 +25,14 @@ namespace VendingMachine
                 decimal totalValueInserted = 0M;
                 while (totalValueInserted < sodaPrice)
                 {
-                    // get the coin inserted
                     string coinNameInserted = Console.ReadLine().ToUpper();
                     Coin coinInserted = new Coin(coinNameInserted);
                     Console.WriteLine($"You have inserted a {coinInserted} worth {coinInserted.ValueOf:c}");
 
-                    // running total of the value of the coins inserted
                     totalValueInserted += coinInserted.ValueOf;
                     Console.WriteLine($"Total value inserted is {totalValueInserted:c}");
                 }
 
-                // select a flavor of soda
                 Boolean canDispensed = false;
                 while (!canDispensed)
                 {
