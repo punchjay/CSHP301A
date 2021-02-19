@@ -12,7 +12,6 @@ namespace CommandLineTest
     public class CommandLineTest
     {
         [TestMethod]
-        [Ignore]
         public void ProcessOrderViaCommandLine()
         {
             StringReader sr = new StringReader(

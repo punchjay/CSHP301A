@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "VendingMachine": {
+      "commandName": "Project",
+      "commandLineArgs": "orange quarter quarter orange halfdollar halfdollar orange orange"
+    }
+  }
+}
