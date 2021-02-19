@@ -1,7 +1,6 @@
-# Exercise 4 - Gibble Jay ejg2
+# Exercise 5 - Gibble Jay ejg2
 
-- Included is Core Path 4.1, 4.2 + Test Automation updates
+- Included is Core Path 5.1, 5.2 + Test Automation updates
 
-- Updated StringUnitTest.cs is breaking at line 24 ```Program.Main(null);``` still trying to debug
 
 
