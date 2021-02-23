@@ -1,23 +1,21 @@
-﻿// Exercise 05
+﻿// Exercise 05.2
 // Gibble, Jay ejg2
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace VendingMachine
 {
+    //  This class will represent a can storage rack of the vending machine.  
+    //  A can of soda will simply be represented as a number in an array indexed
+    //  by the Flavor enumeration (e.g., rack[Flavor.ORANGE] == 1 means 
+    //  that there is one can of orange soda in the rack).
     public class CanRack
     {
-
-        //2.1 Create an array of integers representing the number of cans in the rack indexed by the flavors
-        // The Enum.GetValues().Length value represents the number of flavors (i.e., values in the type flavors).
-        private int[] rack = new int[Enum.GetValues(typeof(Flavor)).Length];
+        //private int[] rack = new int[Enum.GetValues(typeof(Flavor)).Length];
+        private Dictionary<Flavor, int> rack = null;
         private const int EMPTYBIN = 0;
         private const int BINSIZE = 3;
-
-        //2.4
-        //private int regular = EMPTYBIN;
-        //private int orange = EMPTYBIN;
-        //private int lemon = EMPTYBIN;
 
         public CanRack()
         {
@@ -26,31 +24,35 @@ namespace VendingMachine
 
         public void FillTheCanRack()
         {
-            //2.4
-            foreach (int flavorValue in Enum.GetValues(typeof(Flavor)))
+            rack = new Dictionary<Flavor, int>();
+
+            //foreach (int flavorValue in Enum.GetValues(typeof(Flavor)))
+            //{
+            //    rack[flavorValue] = BINSIZE;
+            //}
+
+            foreach (Flavor aFlavor in FlavorOps.AllFlavors)
             {
-                rack[flavorValue] = BINSIZE;
+                rack[aFlavor] = BINSIZE;
             }
 
             Debug.WriteLine("Filling the can rack");
-
-            //regular = BINSIZE;
-            //orange = BINSIZE;
-            //lemon = BINSIZE;
         }
 
-        //2.3 write out the contents of rack array. For example, one flavor per line with the flavor name and
-        // the number of cans of soda of that flavor. In a real system, this function would probably be in a
-        // separate class, and the CanRack would export this information as strings. We’re doing it this way
-        // for the sake of the simplicity of the exercise.
         public void DisplayCanRack()
         {
             Console.WriteLine("Here are your soda flavor options:");
-            foreach (string flavorName in Enum.GetNames(typeof(Flavor)))
+
+            //foreach (string flavorName in Enum.GetNames(typeof(Flavor)))
+            //{
+            //    Flavor flavorEnumeral = (Flavor)Enum.Parse(typeof(Flavor), flavorName);
+            //    int flavorIndex = (int)flavorEnumeral;
+            //    Console.WriteLine($"{flavorName} - {rack[flavorIndex]}");
+            //}
+
+            foreach (Flavor aFlavor in FlavorOps.AllFlavors)
             {
-                Flavor flavorEnumeral = (Flavor)Enum.Parse(typeof(Flavor), flavorName);
-                int flavorIndex = (int)flavorEnumeral;
-                Console.WriteLine($"{flavorName} - {rack[flavorIndex]}");
+                Console.WriteLine($"{aFlavor} - {rack[aFlavor]}");
             }
         }
 
@@ -64,18 +66,15 @@ namespace VendingMachine
             else
             {
                 Flavor flavorEnumeral;
-                //2.4
-                if (Enum.IsDefined(typeof(Flavor), FlavorOfCanToBeAdded))
-                {
-                    Debug.WriteLine($"adding a can of {FlavorOfCanToBeAdded} flavored soda to the rack");
-                    flavorEnumeral = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfCanToBeAdded);
-                    int flavorIndex = (int)flavorEnumeral;
-                    rack[flavorIndex]++;
-                }
-                else
-                {
-                    Debug.WriteLine($"Error: attempt to add an unknown flavor {FlavorOfCanToBeAdded} to the rack");
-                }
+                Debug.WriteLine($"adding a can of {FlavorOfCanToBeAdded} flavored soda to the rack");
+
+                //flavorEnumeral = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfCanToBeAdded);
+                //int flavorIndex = (int)flavorEnumeral;
+                //rack[flavorIndex]++;
+
+                flavorEnumeral = FlavorOps.ToFlavor(FlavorOfCanToBeAdded);
+                rack[flavorEnumeral]++;
+
             }
         }
 
@@ -87,7 +86,7 @@ namespace VendingMachine
         public void RemoveACanOf(string FlavorOfCanToBeRemoved)
         {
             FlavorOfCanToBeRemoved = FlavorOfCanToBeRemoved.ToUpper();
-            //2.4
+
             if (IsEmpty(FlavorOfCanToBeRemoved))
             {
                 Debug.WriteLine($"Empty rack of {FlavorOfCanToBeRemoved}, no can removed.");
@@ -97,10 +96,14 @@ namespace VendingMachine
                 Flavor flavorEnumeral;
                 if (Enum.IsDefined(typeof(Flavor), FlavorOfCanToBeRemoved))
                 {
-                    flavorEnumeral = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfCanToBeRemoved);
                     Debug.WriteLine($"removing a can of {FlavorOfCanToBeRemoved} flavored soda from the rack");
-                    int flavorIndex = (int)flavorEnumeral;
-                    rack[flavorIndex]--;
+
+                    //flavorEnumeral = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfCanToBeRemoved);
+                    //int flavorIndex = (int)flavorEnumeral;
+                    //rack[flavorIndex]--;
+
+                    flavorEnumeral = FlavorOps.ToFlavor(FlavorOfCanToBeRemoved);
+                    rack[flavorEnumeral]--;
                 }
                 else
                 {
@@ -117,12 +120,16 @@ namespace VendingMachine
         public void EmptyCanRackOf(string FlavorOfBinToBeEmptied)
         {
             FlavorOfBinToBeEmptied = FlavorOfBinToBeEmptied.ToUpper();
-            //2.4
+
             if (Enum.IsDefined(typeof(Flavor), FlavorOfBinToBeEmptied))
             {
                 Debug.WriteLine($"Emptying can rack of flavor {FlavorOfBinToBeEmptied}");
-                Flavor f = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfBinToBeEmptied);
-                rack[(int)f] = EMPTYBIN;
+
+                //Flavor f = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfBinToBeEmptied);
+                //rack[(int)f] = EMPTYBIN;
+
+                Flavor flavorEnumeral = FlavorOps.ToFlavor(FlavorOfBinToBeEmptied);
+                rack[flavorEnumeral] = EMPTYBIN;
             }
             else
             {
@@ -140,13 +147,17 @@ namespace VendingMachine
             FlavorOfBinToCheck = FlavorOfBinToCheck.ToUpper();
             Boolean result = false;
             Debug.WriteLine($"Checking if can rack is full of flavor {FlavorOfBinToCheck}");
-            //2.4
+
             Flavor flavorEnumeral;
+
             if (Enum.IsDefined(typeof(Flavor), FlavorOfBinToCheck))
             {
-                flavorEnumeral = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfBinToCheck);
-                int flavorIndex = (int)flavorEnumeral;
-                result = rack[flavorIndex] == BINSIZE;
+                //flavorEnumeral = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfBinToCheck);
+                //int flavorIndex = (int)flavorEnumeral;
+                //result = rack[flavorIndex] == BINSIZE;
+
+                flavorEnumeral = FlavorOps.ToFlavor(FlavorOfBinToCheck);
+                result = rack[flavorEnumeral] == BINSIZE;
             }
             else
             {
@@ -165,13 +176,17 @@ namespace VendingMachine
             FlavorOfBinToCheck = FlavorOfBinToCheck.ToUpper();
             Boolean result = false;
             Debug.WriteLine($"Checking if can rack is empty of flavor {FlavorOfBinToCheck}");
-            //2.4
+
             Flavor flavorEnumeral;
+
             if (Enum.IsDefined(typeof(Flavor), FlavorOfBinToCheck))
             {
-                flavorEnumeral = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfBinToCheck);
-                int flavorIndex = (int)flavorEnumeral;
-                result = rack[flavorIndex] == EMPTYBIN;
+                //flavorEnumeral = (Flavor)Enum.Parse(typeof(Flavor), FlavorOfBinToCheck);
+                //int flavorIndex = (int)flavorEnumeral;
+                //result = rack[flavorIndex] == EMPTYBIN;
+
+                flavorEnumeral = FlavorOps.ToFlavor(FlavorOfBinToCheck);
+                result = rack[flavorEnumeral] == EMPTYBIN;
             }
             else
             {
