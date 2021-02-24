@@ -59,6 +59,7 @@ namespace VendingMachine
         public void AddACanOf(string FlavorOfCanToBeAdded)
         {
             FlavorOfCanToBeAdded = FlavorOfCanToBeAdded.ToUpper();
+
             if (IsFull(FlavorOfCanToBeAdded))
             {
                 Debug.WriteLine($"Full rack of {FlavorOfCanToBeAdded}, no can added.");
@@ -94,6 +95,7 @@ namespace VendingMachine
             else
             {
                 Flavor flavorEnumeral;
+
                 if (Enum.IsDefined(typeof(Flavor), FlavorOfCanToBeRemoved))
                 {
                     Debug.WriteLine($"removing a can of {FlavorOfCanToBeRemoved} flavored soda from the rack");
