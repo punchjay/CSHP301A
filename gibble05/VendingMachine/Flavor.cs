@@ -13,10 +13,9 @@ namespace VendingMachine
 
         static FlavorOps()
         {
-            foreach (string flavorName in Enum.GetNames(typeof(Flavor)))
+            foreach (Flavor flavorEnum in Enum.GetValues(typeof(Flavor)))
             {
-                Flavor flavorEnumeral = ToFlavor(flavorName);
-                _allFlavors.Add(flavorEnumeral);
+                _allFlavors.Add(flavorEnum);
             }
         }
 
@@ -24,16 +23,15 @@ namespace VendingMachine
         public static Flavor ToFlavor(string FlavorName)
         {
             FlavorName = FlavorName.ToUpper();
-
             Flavor result = Flavor.REGULAR;
+
             if (Enum.IsDefined(typeof(Flavor), FlavorName))
             {
                 result = (Flavor)Enum.Parse(typeof(Flavor), FlavorName);
             }
             else
             {
-                // what happens if the string won't convert to
-                // a Flavor enumeral?
+                Console.WriteLine("Something went wrong.");
             }
             return result;
         }

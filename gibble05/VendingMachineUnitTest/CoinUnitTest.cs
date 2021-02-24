@@ -1,4 +1,4 @@
-﻿// Exercise 5
+﻿// Exercise 05
 // Gibble, Jay ejg2
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VendingMachine;

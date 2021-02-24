@@ -36,7 +36,7 @@ namespace VendingMachine
                 where firstCoin.CoinEnumeral == ACoinDenomination
                 select firstCoin;
 
-            Boolean result = false;
+            bool result = false;
 
             if (aCoin.Count() > 0)
             {

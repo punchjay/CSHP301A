@@ -16,19 +16,11 @@ namespace VendingMachine
                 new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME),
                 new Coin(Coin.Denomination.NICKEL), new Coin(Coin.Denomination.QUARTER),
                 new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME) });
-
-            //List<Flavor> shallowCopy = FlavorOps.AllFlavors;
-            ////shallowCopy.Clear();
-
-            //foreach (Flavor f in FlavorOps.AllFlavors)
-            //{
-            //    Console.WriteLine(f);
-            //}
+            bool timeToExit;
 
             Console.WriteLine($"Welcome to the .NET C# Soda Vending Machine.");
 
             Console.WriteLine($"Contents of Coin Box:");
-
             Console.WriteLine($"{changeBox.HalfDollarCount}\tHalf Dollar(s)");
             Console.WriteLine($"{changeBox.QuarterCount}\tQuarter(s)");
             Console.WriteLine($"{changeBox.DimeCount}\tDime(s)");
@@ -37,8 +29,6 @@ namespace VendingMachine
             Console.WriteLine("-------------------------------------------------");
             Console.WriteLine($"Total value in coin box is {changeBox.ValueOf:c}");
 
-
-            bool timeToExit;
             do
             {
                 sodaRack.DisplayCanRack();
@@ -53,7 +43,7 @@ namespace VendingMachine
 
                     totalValueInserted += coinInserted.ValueOf;
                     Console.WriteLine($"Total value inserted is {totalValueInserted:c}");
-                    
+
                     // 05.3
                     changeBox.Deposit(coinInserted);
                 }
