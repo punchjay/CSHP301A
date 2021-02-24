@@ -127,8 +127,8 @@ namespace VendingMachine
                     QuarterCount * (decimal)Coin.Denomination.QUARTER / 100M +
                     DimeCount * (decimal)Coin.Denomination.DIME / 100M +
                     NickelCount * (decimal)Coin.Denomination.NICKEL / 100M;
-                return result;
 
+                return result;
             }
         }
 

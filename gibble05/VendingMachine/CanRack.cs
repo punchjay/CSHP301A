@@ -52,7 +52,7 @@ namespace VendingMachine
 
             foreach (Flavor aFlavor in FlavorOps.AllFlavors)
             {
-                Console.WriteLine($"{aFlavor} - {rack[aFlavor]}");
+                Console.WriteLine($"{aFlavor}\t{rack[aFlavor]}");
             }
         }
 
