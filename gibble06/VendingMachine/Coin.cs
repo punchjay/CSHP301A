@@ -1,13 +1,19 @@
-﻿// Exercise 04
+﻿// Exercise 06
 // Gibble, Jay ejg2
 using System;
+using System.Collections.Generic;
 
-namespace VendingMachineCoin
+namespace VendingMachine
 {
     public class Coin
     {
-        private readonly Denomination coinObject;
+        private Denomination coinObject;
         public enum Denomination { SLUG = 0, NICKEL = 5, DIME = 10, QUARTER = 25, HALFDOLLAR = 50 }
+        public static readonly Coin HALFDOLLARCOIN = new Coin(Denomination.HALFDOLLAR);
+        public static readonly Coin QUARTERCOIN = new Coin(Denomination.QUARTER);
+        public static readonly Coin DIMECOIN = new Coin(Denomination.DIME);
+        public static readonly Coin NICKELCOIN = new Coin(Denomination.NICKEL);
+        public static readonly Coin SLUGCOIN = new Coin(Denomination.SLUG);
 
         // parameterless constructor – coin will be a slug
         public Coin()
@@ -18,9 +24,9 @@ namespace VendingMachineCoin
         // parametered constructor – coin will be of appropriate value
         // if value passed is outside normal set (e.g. 5 cents = Nickel)
         // coin is a slug     
-        public Coin(Denomination CoinEnumeral)
+        public Coin(Denomination DenominationEnumeral)
         {
-            coinObject = CoinEnumeral;
+            coinObject = DenominationEnumeral;
         }
 
         // This constructor will take a string and return the appropriate enumeral
@@ -30,13 +36,18 @@ namespace VendingMachineCoin
             if (Enum.IsDefined(typeof(Denomination), CoinName) &&
                 Enum.TryParse<Denomination>(CoinName, out coinEnumeral))
             {
-
                 coinObject = coinEnumeral;
             }
             else
             {
                 coinObject = Coin.Denomination.SLUG;
             }
+        }
+
+        public static Coin.Denomination ConvertStringToEnumeral(string CoinName)
+        {
+            Denomination denominationEnumeral = (Denomination)Enum.Parse(typeof(Denomination), CoinName);
+            return denominationEnumeral;
         }
 
         // parametered constructor – coin will be of appropriate value
@@ -57,21 +68,53 @@ namespace VendingMachineCoin
             }
         }
 
+        private static List<Denomination> _allDenominations = new List<Denomination>();
+        static Coin()
+        {
+            foreach (string coinName in Enum.GetNames(typeof(Denomination)))
+            {
+                Denomination denominationEnumeral;
+                Enum.TryParse<Denomination>(coinName, out denominationEnumeral);
+                _allDenominations.Add(denominationEnumeral);
+            }
+        }
+
         //  This property will get the monetary value of the coin.
         public decimal ValueOf
         {
             get
             {
-                return (decimal)coinObject / 100M;
+                return convertEnumeralToDecimal(coinObject);
             }
         }
 
+        // decimal value of the specified coin denomination
+        public static decimal ValueOfCoin(Coin.Denomination denominationEnumeral)
+        {
+            return convertEnumeralToDecimal(denominationEnumeral);
+        }
+
+        private static decimal convertEnumeralToDecimal(Coin.Denomination denominationEnumeral)
+        {
+            return (decimal)denominationEnumeral / 100M;
+        }
+
         //  This property will get the coin name as an enumeral
-        public Denomination CoinEnumeral
+        public Denomination DenominationEnumeral
         {
             get
             {
                 return coinObject;
+            }
+        }
+
+
+        // method to return a collection of all coin denominations
+        public static List<Denomination> AllDenominations
+        {
+            get
+            {
+                return _allDenominations;
             }
         }
 
@@ -83,3 +126,4 @@ namespace VendingMachineCoin
         }
     }
 }
+
