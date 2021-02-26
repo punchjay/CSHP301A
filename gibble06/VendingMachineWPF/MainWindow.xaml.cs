@@ -28,6 +28,6 @@ namespace VendingMachineWPF
             InitializeComponent();
         }
 
-        private VendingMachine.VendingMachine machine = new VendingMachine.VendingMachine();
+        private VendMachine machine = new VendMachine();
     }
 }

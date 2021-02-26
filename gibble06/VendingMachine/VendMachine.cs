@@ -7,9 +7,9 @@ using System.Text;
 
 namespace VendingMachine
 {
-    public class VendingMachine : INotifyPropertyChanged
+    public class VendMachine : INotifyPropertyChanged
     {
-        public VendingMachine()
+        public VendMachine()
         { 
         
         }
