@@ -6,14 +6,11 @@ namespace VendingMachine
     {
         private int price;
 
-        public PurchasePrice()
-        {
-            price = 0;
-        }
+        public PurchasePrice() { }
 
         public PurchasePrice(int initialPrice)
         {
-            price = initialPrice;
+            Price = initialPrice;
         }
 
         public int Price
