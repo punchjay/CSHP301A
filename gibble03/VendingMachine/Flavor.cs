@@ -3,5 +3,5 @@
 
 namespace VendingMachine
 {
-        public enum Flavor { LEMON, ORANGE, REGULAR }
+    public enum Flavor { LEMON, ORANGE, REGULAR }
 }

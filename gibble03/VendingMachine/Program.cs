@@ -25,12 +25,12 @@ namespace VendingMachine
 
             if (valueInsertedUnder) Console.WriteLine($"Please enter {valueRemaining:c} cents more to complete your transaction.");
             else if (valueInsertedHigh) Console.WriteLine($"Please enter less than a dollar to complete your transaction.");
-            else if  (valueInsertedOver)
+            else if (valueInsertedOver)
             {
                 sodaRack = new CanRack();
                 sodaRack.RemoveACanOfEnum(Flavor.LEMON);
                 sodaRack.AddACanOfEnum(Flavor.LEMON);
-                Console.WriteLine($"Thanks! Here is your soda. Your change is {valueRemaining * -1:c} cents."); 
+                Console.WriteLine($"Thanks! Here is your soda. Your change is {valueRemaining * -1:c} cents.");
             }
         }
     }
