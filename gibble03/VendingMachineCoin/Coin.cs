@@ -30,7 +30,6 @@ namespace VendingMachineCoin
             if (Enum.IsDefined(typeof(Denomination), CoinName) &&
                 Enum.TryParse<Denomination>(CoinName, out coinEnumeral))
             {
-
                 coinObject = coinEnumeral;
             }
             else
@@ -74,7 +73,6 @@ namespace VendingMachineCoin
                 return coinObject;
             }
         }
-
 
         // use Enum.GetName() with a private Denomination instance variable
         // to produce a string
