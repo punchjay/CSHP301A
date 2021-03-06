@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace VendingMachine
 {
-    public class CoinBox
+    public class CoinBox : INotifyPropertyChanged
     {
         private List<Coin> box;
 
@@ -29,6 +30,13 @@ namespace VendingMachine
         // of its defining class
         private static List<Coin.Denomination> reversedCoinList = null;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void InvokePropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         static CoinBox()
         {
             reversedCoinList = new List<Coin.Denomination>(Coin.AllDenominations);
@@ -39,6 +47,7 @@ namespace VendingMachine
         public void Deposit(Coin ACoin)
         {
             box.Add(ACoin);
+            InvokePropertyChanged("ValueOf");
         }
 
         // take a coin of the specified denomination out of the box
@@ -54,6 +63,10 @@ namespace VendingMachine
             {
                 result = box.Remove(aCoin.First());
             }
+
+            InvokePropertyChanged("CanMakeChange");
+            InvokePropertyChanged("ValueOf");
+
             return result;
         }
 
@@ -86,6 +99,10 @@ namespace VendingMachine
                 }
 
             }
+
+            InvokePropertyChanged("CanMakeChange");
+            InvokePropertyChanged("ValueOf");
+
             Debug.WriteLine("AmountRemoved {0:c}, AmountToRemove {1:c}", amountRemoved, AmountToRemove);
             return amountRemoved == AmountToRemove;
         }
@@ -249,6 +266,10 @@ namespace VendingMachine
                 Destination.Deposit(box[0]);
                 this.box.Remove(box[0]);
             }
+
+            InvokePropertyChanged("CanMakeChange");
+            InvokePropertyChanged("ValueOf");
+
             return result;
         }
 
@@ -309,6 +330,10 @@ namespace VendingMachine
             {
                 result = false;
             }
+
+            InvokePropertyChanged("CanMakeChange");
+            InvokePropertyChanged("ValueOf");
+
             return result;
         }
 

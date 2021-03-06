@@ -26,8 +26,10 @@ namespace VendingMachineWPF
         public MainWindow()
         {
             InitializeComponent();
+            //connect object to its data context
+            DataContext = vendingMachine;
         }
 
-        private VendMachineVM machine = new VendMachineVM();
+        private VendMachineVM vendingMachine = new VendMachineVM();
     }
 }

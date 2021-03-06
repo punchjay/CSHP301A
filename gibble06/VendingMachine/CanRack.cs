@@ -2,6 +2,7 @@
 // Gibble, Jay ejg2
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 
 namespace VendingMachine
@@ -10,13 +11,20 @@ namespace VendingMachine
     //  A can of soda will simply be represented as a number in an array indexed
     //  by the Flavor enumeration (e.g., rack[Flavor.ORANGE] == 1 means 
     //  that there is one can of orange soda in the rack).
-    public class CanRack
+    public class CanRack: INotifyPropertyChanged
     {
         private Dictionary<Flavor, int> rack = null;
         public const int EMPTYBIN = 0;
         public const int BINSIZE = 3;
 
         private const int DUMMYARGUMENT = 0;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void InvokePropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         // Constructor for a can rack. The rack starts out full
         // (i.e., BINSIZE cans of each flavor).
@@ -41,6 +49,7 @@ namespace VendingMachine
                 Flavor flavorEnumeral = FlavorOps.ToFlavor(FlavorOfCanToBeAdded);
                 rack[flavorEnumeral]++;
             }
+            InvokePropertyChanged("Item[]");
         }
 
         public void AddACanOf(Flavor FlavorOfCanToBeAdded)
@@ -63,6 +72,7 @@ namespace VendingMachine
                 Flavor flavorEnumeral = FlavorOps.ToFlavor(FlavorOfCanToBeRemoved);
                 rack[flavorEnumeral]--;
             }
+            InvokePropertyChanged("Item[]");
         }
 
         public void RemoveACanOf(Flavor FlavorOfCanToBeRemoved)
@@ -175,6 +185,7 @@ namespace VendingMachine
                     Debug.WriteLine("{0} Bin Empty. {1} can{2} of flavor {0} {3} not available for removal",
                         FlavorOfBin, sodaCansLeftOver, pluralCan, pluralWas);
                 }
+                InvokePropertyChanged("Item[]");
             }
         }
 
