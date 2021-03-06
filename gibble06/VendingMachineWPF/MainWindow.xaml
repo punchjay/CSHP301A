@@ -17,6 +17,13 @@
         <Button HorizontalAlignment="Right" Margin="0,151,140,0" VerticalAlignment="Top">
             <Image Height="100" Width="100"/>
         </Button>
-        <TextBlock x:Name="___No_Name_" HorizontalAlignment="Left" Margin="35,315,0,0" Text="Exact Change Required" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="149,306,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="369,306,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="583,306,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonCoinReturn" Content="Button" HorizontalAlignment="Left" Margin="717,307,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonInsertHalftDollar" Content="Button" HorizontalAlignment="Left" Margin="231,364,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonInsertQuarter" Content="Button" HorizontalAlignment="Left" Margin="331,364,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtontnsertDime" Content="Button" HorizontalAlignment="Left" Margin="427,364,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ButtonInsertNickel" Content="Button" HorizontalAlignment="Left" Margin="525,364,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
