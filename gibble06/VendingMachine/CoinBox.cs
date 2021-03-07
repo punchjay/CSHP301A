@@ -47,6 +47,7 @@ namespace VendingMachine
         public void Deposit(Coin ACoin)
         {
             box.Add(ACoin);
+            InvokePropertyChanged("CanMakeChange");
             InvokePropertyChanged("ValueOf");
         }
 
