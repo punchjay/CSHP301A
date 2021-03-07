@@ -1,9 +1,7 @@
 ﻿// Exercise 06
 // Gibble, Jay ejg2
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 
 namespace VendingMachine
 {
@@ -28,7 +26,7 @@ namespace VendingMachine
             new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME) });
             TempCoinBox = new CoinBox();
             sodaPrice = new PurchasePrice(0.35M);
-            _title = $"Please insert {sodaPrice.PriceDecimal:c} for your choice a Soda.";
+            _title = $"Please insert {sodaPrice.PriceDecimal:c} for your choice of Soda";
         }
 
         public void EjectCan(Flavor flavorToBeEjected) 
@@ -39,11 +37,11 @@ namespace VendingMachine
                 if (changeDue > 0M && MainCoinBox.CanMakeChange)
                 {
                     MainCoinBox.Withdraw(changeDue);
-                    CustomerMessage = $"Here is your {flavorToBeEjected} Soda and your {changeDue:c}.";
+                    CustomerMessage = $"Here is your {flavorToBeEjected} Soda and your {changeDue:c}";
                 }
                 else
                 {
-                    CustomerMessage = $"Here is your {flavorToBeEjected} Soda.";
+                    CustomerMessage = $"Here is your {flavorToBeEjected} Soda";
                 }
                 //transfer money out of TempCoinBox
                 TempCoinBox.Transfer(MainCoinBox);
@@ -51,7 +49,7 @@ namespace VendingMachine
             }
             else if (Rack.IsEmpty(flavorToBeEjected))
             {
-                CustomerMessage = $"Sorry, no more {flavorToBeEjected} in the Soda bin.";
+                CustomerMessage = $"Sorry, no more {flavorToBeEjected} in the Soda bin";
             }
         }
 
