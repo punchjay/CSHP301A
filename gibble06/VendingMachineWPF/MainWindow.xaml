@@ -10,23 +10,23 @@
         <local:ExactChangeIndicatorConverter x:Key="ExactChangeIndicatorConverter"/>
     </Window.Resources>
     <Grid>
-        <Label Content="{Binding Title, FallbackValue=Insert Your Coins Here!}" HorizontalAlignment="Center" Margin="0,21,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="SemiBold"/>
-        <Button x:Name="ButtonEjectRegular" HorizontalAlignment="Left" Margin="140,151,0,0" VerticalAlignment="Top" Click="ButtonEjectRegular_Click">
-            <Image Height="100" Width="100"/>
+        <Label Content="{Binding Title, FallbackValue=Insert Your Coins Here!}" HorizontalAlignment="Center" Margin="0,1,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Light" />
+        <Button x:Name="ButtonEjectRegular" HorizontalAlignment="Left" Margin="140,57,0,0" VerticalAlignment="Top" Click="ButtonEjectRegular_Click" Cursor="Hand" BorderThickness="0">
+            <Image HorizontalAlignment="Center"  VerticalAlignment="Top" Width="120" Source="./Resources/Can Regular.jpg"/>
         </Button>
-        <Button x:Name="ButtonEjectOrange" HorizontalAlignment="Center" Margin="0,151,0,0" VerticalAlignment="Top" Click="ButtonEjectOrange_Click">
-            <Image Height="100" Width="100"/>
+        <Button x:Name="ButtonEjectOrange" HorizontalAlignment="Center" Margin="0,57,0,0" VerticalAlignment="Top" Click="ButtonEjectOrange_Click" Cursor="Hand" BorderThickness="0">
+            <Image HorizontalAlignment="Center"  VerticalAlignment="Top" Width="120" Source="./Resources/Can Orange.jpg"/>
         </Button>
-        <Button x:Name="ButtonEjectLemon" HorizontalAlignment="Right" Margin="0,151,140,0" VerticalAlignment="Top" Click="ButtonEjectLemon_Click">
-            <Image Height="100" Width="100"/>
+        <Button x:Name="ButtonEjectLemon" HorizontalAlignment="Right" Margin="0,57,140,0" VerticalAlignment="Top" Click="ButtonEjectLemon_Click" Cursor="Hand"  BorderThickness="0">
+            <Image HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Source="./Resources/Can Lemon.jpg"/>
         </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="149,306,0,0" Text="{Binding MainCoinBox.CanMakeChange, Converter={StaticResource ExactChangeIndicatorConverter}}" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="369,306,0,0" Text="{Binding CustomerMessage, FallbackValue=Customer Message}" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="583,306,0,0" Text="{Binding TempCoinBox.ValueOf, StringFormat={}{0:c}, FallbackValue=$0.00}" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button x:Name="ButtonInsertHalftDollar" Content="Half Dollar" HorizontalAlignment="Left" Margin="231,364,0,0" VerticalAlignment="Top" Click="ButtonInsertHalftDollar_Click"/>
-        <Button x:Name="ButtonInsertQuarter" Content="Quarter" HorizontalAlignment="Left" Margin="331,364,0,0" VerticalAlignment="Top" Click="ButtonInsertQuarter_Click"/>
-        <Button x:Name="ButtontnsertDime" Content="Dime" HorizontalAlignment="Left" Margin="427,364,0,0" VerticalAlignment="Top" Click="ButtontnsertDime_Click"/>
-        <Button x:Name="ButtonInsertNickel" Content="Nickel" HorizontalAlignment="Left" Margin="525,364,0,0" VerticalAlignment="Top" Click="ButtonInsertNickel_Click"/>
-        <Button x:Name="ButtonCoinReturn" Content="Coin Return" HorizontalAlignment="Left" Margin="717,307,0,0" VerticalAlignment="Top" Click="ButtonCoinReturn_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="31,359,0,0" Text="{Binding MainCoinBox.CanMakeChange,FallbackValue=Exact Change Required, Converter={StaticResource ExactChangeIndicatorConverter}}" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Segoe UI Light"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,274,0,0" Text="{Binding CustomerMessage, FallbackValue=Customer Message}" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Light"/>
+        <TextBlock HorizontalAlignment="Left" Margin="721,360,0,0" Text="{Binding TempCoinBox.ValueOf, StringFormat={}{0:c}, FallbackValue=$0.00}" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" FontFamily="Segoe UI Light"/>
+        <Button x:Name="ButtonInsertHalftDollar" Content="Half Dollar" HorizontalAlignment="Left" Margin="31,334,0,0" VerticalAlignment="Top" Click="ButtonInsertHalftDollar_Click" Width="100"/>
+        <Button x:Name="ButtonInsertQuarter" Content="Quarter" HorizontalAlignment="Left" Margin="141,334,0,0" VerticalAlignment="Top" Click="ButtonInsertQuarter_Click" Width="100"/>
+        <Button x:Name="ButtontnsertDime" Content="Dime" HorizontalAlignment="Left" Margin="247,334,0,0" VerticalAlignment="Top" Click="ButtontnsertDime_Click" Width="100"/>
+        <Button x:Name="ButtonInsertNickel" Content="Nickel" HorizontalAlignment="Left" Margin="355,334,0,0" VerticalAlignment="Top" Click="ButtonInsertNickel_Click" Width="100"/>
+        <Button x:Name="ButtonCoinReturn" Content="Coin Return" HorizontalAlignment="Left" Margin="675,335,0,0" VerticalAlignment="Top" Click="ButtonCoinReturn_Click" Width="100"/>
     </Grid>
 </Window>

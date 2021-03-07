@@ -10,7 +10,7 @@ namespace VendingMachineWPF
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (bool)value ? string.Empty : "Exact Change Required";
+            return (bool)value ? string.Empty : "*Exact Change Required";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
