@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:VendingMachineWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="470" Width="800">
+    <Window.DataContext>
+        <local:VendingMachineVM/>
+    </Window.DataContext>
     <Window.Resources>
         <local:ExactChangeIndicatorConverter x:Key="ExactChangeIndicatorConverter"/>
     </Window.Resources>
@@ -42,7 +45,33 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Service - You Break It, You Bought It">
-                <Grid />
+                <Grid  Height="430" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox x:Name="groupBoxCanRack" Header="Can Rack" Grid.Row="0" Grid.RowSpan="2">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition ></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="119*" />
+                                    <ColumnDefinition Width="119*" />
+                                    <ColumnDefinition Width="119*" />
+                                </Grid.ColumnDefinitions>
+                                <ItemsControl x:Name="itemsControlCanRackContents" Grid.Column="0"/>
+                            </Grid>
+                            <!--<Button x:Name="ButtonRefillCanRack" Content="Refill Can Rack" Click="ButtonRefillCanRack_Click"/>-->
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
             </TabItem>
         </TabControl>
     </Grid>
