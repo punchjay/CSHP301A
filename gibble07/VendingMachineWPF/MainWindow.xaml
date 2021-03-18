@@ -14,7 +14,7 @@
     </Window.Resources>
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
         <TabControl>
-            <TabItem Header="Vending Machine 7.2">
+            <TabItem Header="Vending Machine 7.2" Background="{x:Null}">
                 <Grid Height="430">
                     <Label Content="{Binding Title, FallbackValue=Insert Your Coins Here!}" HorizontalAlignment="Center" Margin="0,1,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Light" />
                     <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="800">
@@ -44,33 +44,56 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Service - You Break It, You Bought It">
-                <Grid  Height="430" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="4*"/>
-                        <RowDefinition Height="4*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <GroupBox x:Name="groupBoxCanRack" Header="Can Rack" Grid.Row="0" Grid.RowSpan="2">
-                        <StackPanel>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition ></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="119*" />
-                                    <ColumnDefinition Width="119*" />
-                                    <ColumnDefinition Width="119*" />
-                                </Grid.ColumnDefinitions>
-                                <ItemsControl x:Name="itemsControlCanRackContents" Grid.Column="0"/>
-                            </Grid>
-                            <!--<Button x:Name="ButtonRefillCanRack" Content="Refill Can Rack" Click="ButtonRefillCanRack_Click"/>-->
-                        </StackPanel>
-                    </GroupBox>
+            <TabItem Header="Service - You Break It, You Bought It" Background="{x:Null}">
+                <Grid Height="430" HorizontalAlignment="Left" Width="800">
+                    <Grid Width="400" HorizontalAlignment="Left" >
+                        <GroupBox x:Name="groupBoxCanRack" Header="Can Rack" BorderBrush="{x:Null}">
+                            <StackPanel>
+                                <ItemsControl x:Name="itemsControlCanRackContents"/>
+                                <Button x:Name="ButtonRefillCanRack" Content="Refill Can Rack" Width="100" Background="{x:Null}" HorizontalAlignment="Left" />
+                            </StackPanel>
+                        </GroupBox>
+                    </Grid>
+                    
+                    <!--<GroupBox x:Name="groupBoxCoinBoxes" Header="Coin Boxes" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Main Coin Box" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                            <ListView x:Name="listViewMainCoinBox" Grid.Row="0" HorizontalAlignment="Center"  VerticalAlignment="Center" >
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Coin" DisplayMemberBinding="{Binding [0]}" Width="75"/>
+                                        <GridViewColumn Header="Count" DisplayMemberBinding="{Binding [1]}" Width="50"/>
+                                        <GridViewColumn Header="Value" DisplayMemberBinding="{Binding [2]}" Width="50"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <Button x:Name="buttonEmptyMainCoinBox" Grid.Row="0" Grid.Column="1" Margin="0,20,0,20" >
+                                <TextBlock Text="Empty Main Coin Box" TextWrapping="Wrap"/>
+                            </Button>
+                            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Text="Inserted Coin Box"/>
+                            <ListView x:Name="listViewInsertedCoinBox" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Coin" DisplayMemberBinding="{Binding [0]}" Width="75"/>
+                                        <GridViewColumn Header="Count" DisplayMemberBinding="{Binding [1]}" Width="50"/>
+                                        <GridViewColumn Header="Value" DisplayMemberBinding="{Binding [2]}" Width="50"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <Button x:Name="buttonEmptyInsertedCoinBox" Grid.Row="1" Grid.Column="1" Margin="0,20,0,20">
+                                <TextBlock Text="Empty Inserted Coin Box" TextWrapping="Wrap"/>
+                            </Button>
+                        </Grid>
+                    </GroupBox>-->
+
                 </Grid>
             </TabItem>
         </TabControl>
