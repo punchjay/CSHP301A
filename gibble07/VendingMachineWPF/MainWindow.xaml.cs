@@ -10,7 +10,7 @@ namespace VendingMachineWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private VendMachineVM vendingMachine = new VendMachineVM();
+        private VendMachineController vendingMachine = new VendMachineController();
 
         public MainWindow()
         {

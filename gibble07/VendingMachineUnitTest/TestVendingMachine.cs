@@ -6,7 +6,7 @@ namespace TestMachine
     [TestClass]
     public class TestVendingMachine
     {
-        private VendMachineVM machine = new VendMachineVM();
+        private VendMachineController machine = new VendMachineController();
         private Flavor testFlavor = Flavor.REGULAR;
         private int canCountBeforeAttempt;
         private int canCountAfterAttempt;

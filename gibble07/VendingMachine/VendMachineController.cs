@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace VendingMachine
 {
-    public class VendMachineVM : INotifyPropertyChanged
+    public class VendMachineController : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -19,7 +19,7 @@ namespace VendingMachine
         public CoinBox TempCoinBox { get; set; }
         private PurchasePrice sodaPrice;
 
-        public VendMachineVM()
+        public VendMachineController()
         {
             Rack = new CanRack();
             MainCoinBox = new CoinBox(new List<Coin> { new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME), new Coin(Coin.Denomination.NICKEL),
