@@ -50,7 +50,7 @@
                         <GroupBox x:Name="groupBoxCanRack" Header="Can Rack" BorderBrush="{x:Null}">
                             <StackPanel>
                                 <ItemsControl x:Name="itemsControlCanRackContents"/>
-                                <Button x:Name="ButtonRefillCanRack" Content="Refill Can Rack" Width="100" Background="{x:Null}" HorizontalAlignment="Left" />
+                                <Button x:Name="ButtonRefillCanRack" Content="Refill Can Rack" Width="100" Background="{x:Null}" HorizontalAlignment="Left" Click="ButtonRefillCanRack_Click" />
                             </StackPanel>
                         </GroupBox>
                     </Grid>

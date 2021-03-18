@@ -2,6 +2,7 @@
 // Gibble, Jay ejg2
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 
@@ -16,8 +17,10 @@ namespace VendingMachine
         private Dictionary<Flavor, int> rack = null;
         public const int EMPTYBIN = 0;
         public const int BINSIZE = 3;
-
         private const int DUMMYARGUMENT = 0;
+
+        // 7.2
+        public ObservableCollection<string> CanRackDisplayData = new ObservableCollection<string>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -32,6 +35,23 @@ namespace VendingMachine
         {
             rack = new Dictionary<Flavor, int>();
             FillTheCanRack();
+        }
+
+        // 7.2
+        private void updateCanRackDisplayData()
+        {
+            CanRackDisplayData.Clear();
+
+            foreach (Flavor f in FlavorOps.AllFlavors)
+            {
+                addRackDataToObservableCollection(f, rack[f]);
+            }
+        }
+
+        private void addRackDataToObservableCollection(Flavor flavorToDisplay, int canCount)
+        {
+            for (int index = 0; index < canCount; index++)
+                CanRackDisplayData.Add(flavorToDisplay.ToString());
         }
 
         //  This method adds a can of the specified flavor to the rack.  
@@ -49,7 +69,9 @@ namespace VendingMachine
                 Flavor flavorEnumeral = FlavorOps.ToFlavor(FlavorOfCanToBeAdded);
                 rack[flavorEnumeral]++;
             }
+            // 7.2
             InvokePropertyChanged("Item[]");
+            updateCanRackDisplayData();
         }
 
         public void AddACanOf(Flavor FlavorOfCanToBeAdded)
@@ -72,7 +94,9 @@ namespace VendingMachine
                 Flavor flavorEnumeral = FlavorOps.ToFlavor(FlavorOfCanToBeRemoved);
                 rack[flavorEnumeral]--;
             }
+            // 7.2
             InvokePropertyChanged("Item[]");
+            updateCanRackDisplayData();
         }
 
         public void RemoveACanOf(Flavor FlavorOfCanToBeRemoved)
@@ -88,6 +112,9 @@ namespace VendingMachine
             {
                 rack[aFlavor] = BINSIZE;
             }
+            // 7.2
+            InvokePropertyChanged("Item[]");
+            updateCanRackDisplayData();
         }
 
         //  This public void will empty the rack of a given flavor.
@@ -96,6 +123,9 @@ namespace VendingMachine
             Flavor flavorEnumeral = FlavorOps.ToFlavor(FlavorOfBinToBeEmptied);
             Debug.WriteLine("Emptying can rack of flavor {0}", FlavorOfBinToBeEmptied);
             rack[flavorEnumeral] = EMPTYBIN;
+            // 7.2
+            InvokePropertyChanged("Item[]");
+            updateCanRackDisplayData();
         }
 
 
@@ -186,9 +216,10 @@ namespace VendingMachine
                         FlavorOfBin, sodaCansLeftOver, pluralCan, pluralWas);
                 }
                 InvokePropertyChanged("Item[]");
+                // 7.2
+                updateCanRackDisplayData();
             }
         }
-
 
         // write out the contents of rack array. For example, one flavor per line with the flavor name and
         // the number of cans of soda of that flavor. In a real system, this function would probably be in a 
