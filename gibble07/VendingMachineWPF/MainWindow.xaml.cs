@@ -15,6 +15,7 @@ namespace VendingMachineWPF
             InitializeComponent();
             //connect object to its data context
             DataContext = vendingMachine;
+            // 7.2
             itemsControlCanRackContents.ItemsSource = vendingMachine.Rack.CanRackDisplayData;
         }
 
@@ -62,6 +63,7 @@ namespace VendingMachineWPF
             vendingMachine.EjectCan(Flavor.LEMON);
         }
 
+        // 7.2
         private void ButtonRefillCanRack_Click(object sender, RoutedEventArgs e)
         {
             vendingMachine.Rack.FillTheCanRack();

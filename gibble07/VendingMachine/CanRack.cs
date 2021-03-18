@@ -20,7 +20,7 @@ namespace VendingMachine
         private const int DUMMYARGUMENT = 0;
 
         // 7.2
-        public ObservableCollection<string> CanRackDisplayData = new ObservableCollection<string>();
+        public ObservableCollection<object> CanRackDisplayData = new ObservableCollection<object>();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -48,6 +48,7 @@ namespace VendingMachine
             }
         }
 
+        // 7.2
         private void addRackDataToObservableCollection(Flavor flavorToDisplay, int canCount)
         {
             for (int index = 0; index < canCount; index++)
