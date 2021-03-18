@@ -13,8 +13,19 @@ namespace VendingMachine
     {
         public ObservableCollection<string[]> CoinBoxDisplayData = new ObservableCollection<string[]>();
 
-        private void updateCoinBoxDisplayData() {
+        private void updateCoinBoxDisplayData()
+        {
             CoinBoxDisplayData.Clear();
+            addCoinDataToObservableCollection("Half Dollar", HalfDollarCount, HalfDollarCount * new Coin(Coin.Denomination.HALFDOLLAR).ValueOf);
+            addCoinDataToObservableCollection("Quarter", QuarterCount, QuarterCount * new Coin(Coin.Denomination.QUARTER).ValueOf);
+            addCoinDataToObservableCollection("Dime", DimeCount, DimeCount * new Coin(Coin.Denomination.DIME).ValueOf);
+            addCoinDataToObservableCollection("Nickel", NickelCount, NickelCount * new Coin(Coin.Denomination.NICKEL).ValueOf);
+            addCoinDataToObservableCollection("Total", HalfDollarCount + QuarterCount + DimeCount + NickelCount, this.ValueOf);
+        }
+
+        private void addCoinDataToObservableCollection(string coinName, int coinCount, decimal coinValue)
+        {
+            CoinBoxDisplayData.Add(new string[] { coinName, coinCount.ToString(), $"{coinValue:C}" });
         }
 
         private List<Coin> box;
@@ -23,12 +34,14 @@ namespace VendingMachine
         public CoinBox()
         {
             box = new List<Coin>();
+            updateCoinBoxDisplayData();
         }
 
         // constructor to create a coin box with some coins in it
         public CoinBox(List<Coin> SeedMoney)
         {
             box = SeedMoney;
+            updateCoinBoxDisplayData();
         }
 
         // Note that the reverse list object must be created
@@ -56,6 +69,7 @@ namespace VendingMachine
             box.Add(ACoin);
             InvokePropertyChanged("CanMakeChange");
             InvokePropertyChanged("ValueOf");
+            updateCoinBoxDisplayData();
         }
 
         // take a coin of the specified denomination out of the box
@@ -74,6 +88,7 @@ namespace VendingMachine
 
             InvokePropertyChanged("CanMakeChange");
             InvokePropertyChanged("ValueOf");
+            updateCoinBoxDisplayData();
 
             return result;
         }
@@ -101,7 +116,7 @@ namespace VendingMachine
                 if (amountLeftToRemove >= Coin.ValueOfCoin(denominationEnumeral))
                 {
                     amountOfThisCoinRemoved = removeCoinDenomiation(
-                        amountLeftToRemove, denominationEnumeral);
+                    amountLeftToRemove, denominationEnumeral);
                     amountLeftToRemove -= amountOfThisCoinRemoved;
                     amountRemoved += amountOfThisCoinRemoved;
                 }
@@ -110,7 +125,7 @@ namespace VendingMachine
 
             InvokePropertyChanged("CanMakeChange");
             InvokePropertyChanged("ValueOf");
-
+            updateCoinBoxDisplayData();
             Debug.WriteLine("AmountRemoved {0:c}, AmountToRemove {1:c}", amountRemoved, AmountToRemove);
             return amountRemoved == AmountToRemove;
         }
@@ -175,6 +190,7 @@ namespace VendingMachine
                     break;
                 }
             }
+            updateCoinBoxDisplayData();
 
             return amountRemoved;
         }
@@ -277,6 +293,7 @@ namespace VendingMachine
 
             InvokePropertyChanged("CanMakeChange");
             InvokePropertyChanged("ValueOf");
+            updateCoinBoxDisplayData();
 
             return result;
         }
@@ -341,6 +358,7 @@ namespace VendingMachine
 
             InvokePropertyChanged("CanMakeChange");
             InvokePropertyChanged("ValueOf");
+            updateCoinBoxDisplayData();
 
             return result;
         }
