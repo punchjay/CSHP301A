@@ -10,16 +10,15 @@ namespace VendingMachineWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private VendMachineVM vendingMachine = new VendMachineVM();
+
         public MainWindow()
         {
             InitializeComponent();
-            //connect object to its data context
             DataContext = vendingMachine;
             // 7.2
             itemsControlCanRackContents.ItemsSource = vendingMachine.Rack.CanRackDisplayData;
         }
-
-        private VendMachineVM vendingMachine = new VendMachineVM();
 
         private void ButtonInsertHalftDollar_Click(object sender, RoutedEventArgs e)
         {
@@ -67,6 +66,12 @@ namespace VendingMachineWPF
         private void ButtonRefillCanRack_Click(object sender, RoutedEventArgs e)
         {
             vendingMachine.Rack.FillTheCanRack();
+        }
+
+        // 7.2
+        private void ButtonEmptyMainCoinBox_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
