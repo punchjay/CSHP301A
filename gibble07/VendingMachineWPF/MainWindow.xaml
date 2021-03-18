@@ -70,19 +70,6 @@
                                 <Button x:Name="buttonEmptyMainCoinBox" Background="{x:Null}" HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="12" Margin="0,15,0,0" Width="146" Click="ButtonEmptyMainCoinBox_Click">
                                     <TextBlock Text="Empty Main Coin Box" TextWrapping="Wrap"/>
                                 </Button>
-                                <TextBlock Text="Inserted Coin Box"  HorizontalAlignment="Left" FontSize="14" Margin="0,40,0,0" />
-                                <ListView x:Name="listViewInsertedCoinBox" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14">
-                                    <ListView.View>
-                                        <GridView>
-                                            <GridViewColumn Header="Coin" DisplayMemberBinding="{Binding [0]}" Width="75"/>
-                                            <GridViewColumn Header="Count" DisplayMemberBinding="{Binding [1]}" Width="50"/>
-                                            <GridViewColumn Header="Value" DisplayMemberBinding="{Binding [2]}" Width="50"/>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                                <Button x:Name="buttonEmptyInsertedCoinBox" Background="{x:Null}" HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="12" Margin="0,15,0,0" Width="146">
-                                    <TextBlock Text="Empty Inserted Coin Box" TextWrapping="Wrap"/>
-                                </Button>
                             </StackPanel>
                         </GroupBox>
                     </Grid>

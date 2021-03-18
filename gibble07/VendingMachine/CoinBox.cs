@@ -11,8 +11,10 @@ namespace VendingMachine
 {
     public class CoinBox : INotifyPropertyChanged
     {
+        // 7.2
         public ObservableCollection<string[]> CoinBoxDisplayData = new ObservableCollection<string[]>();
 
+        // 7.2
         private void updateCoinBoxDisplayData()
         {
             CoinBoxDisplayData.Clear();
@@ -23,6 +25,7 @@ namespace VendingMachine
             addCoinDataToObservableCollection("Total", HalfDollarCount + QuarterCount + DimeCount + NickelCount, this.ValueOf);
         }
 
+        // 7.2
         private void addCoinDataToObservableCollection(string coinName, int coinCount, decimal coinValue)
         {
             CoinBoxDisplayData.Add(new string[] { coinName, coinCount.ToString(), $"{coinValue:C}" });
@@ -34,13 +37,15 @@ namespace VendingMachine
         public CoinBox()
         {
             box = new List<Coin>();
+            // 7.2
             updateCoinBoxDisplayData();
         }
 
         // constructor to create a coin box with some coins in it
         public CoinBox(List<Coin> SeedMoney)
         {
-            box = SeedMoney;
+            box = SeedMoney;        
+            // 7.2
             updateCoinBoxDisplayData();
         }
 
@@ -69,6 +74,7 @@ namespace VendingMachine
             box.Add(ACoin);
             InvokePropertyChanged("CanMakeChange");
             InvokePropertyChanged("ValueOf");
+            // 7.2
             updateCoinBoxDisplayData();
         }
 
@@ -88,6 +94,7 @@ namespace VendingMachine
 
             InvokePropertyChanged("CanMakeChange");
             InvokePropertyChanged("ValueOf");
+            // 7.2
             updateCoinBoxDisplayData();
 
             return result;
@@ -125,6 +132,7 @@ namespace VendingMachine
 
             InvokePropertyChanged("CanMakeChange");
             InvokePropertyChanged("ValueOf");
+            // 7.2
             updateCoinBoxDisplayData();
             Debug.WriteLine("AmountRemoved {0:c}, AmountToRemove {1:c}", amountRemoved, AmountToRemove);
             return amountRemoved == AmountToRemove;
@@ -190,6 +198,7 @@ namespace VendingMachine
                     break;
                 }
             }
+            // 7.2
             updateCoinBoxDisplayData();
 
             return amountRemoved;
@@ -293,6 +302,7 @@ namespace VendingMachine
 
             InvokePropertyChanged("CanMakeChange");
             InvokePropertyChanged("ValueOf");
+            // 7.2
             updateCoinBoxDisplayData();
 
             return result;
@@ -358,6 +368,7 @@ namespace VendingMachine
 
             InvokePropertyChanged("CanMakeChange");
             InvokePropertyChanged("ValueOf");
+            // 7.2
             updateCoinBoxDisplayData();
 
             return result;
