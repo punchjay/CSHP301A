@@ -70,49 +70,22 @@
                                 <Button x:Name="buttonEmptyMainCoinBox" Grid.Row="0" Grid.Column="1" Margin="0,20,0,20" >
                                     <TextBlock Text="Empty Main Coin Box" TextWrapping="Wrap"/>
                                 </Button>
+                                <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Text="Inserted Coin Box"/>
+                                <ListView x:Name="listViewInsertedCoinBox" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Coin" DisplayMemberBinding="{Binding [0]}" Width="75"/>
+                                            <GridViewColumn Header="Count" DisplayMemberBinding="{Binding [1]}" Width="50"/>
+                                            <GridViewColumn Header="Value" DisplayMemberBinding="{Binding [2]}" Width="50"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                                <Button x:Name="buttonEmptyInsertedCoinBox" Margin="0,20,0,20">
+                                    <TextBlock Text="Empty Inserted Coin Box" TextWrapping="Wrap"/>
+                                </Button>
                             </StackPanel>
                         </GroupBox>
                     </Grid>
-
-                    <!--<GroupBox x:Name="groupBoxCoinBoxes" Header="Coin Boxes" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="Main Coin Box" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
-                            <ListView x:Name="listViewMainCoinBox" Grid.Row="0" HorizontalAlignment="Center"  VerticalAlignment="Center" >
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="Coin" DisplayMemberBinding="{Binding [0]}" Width="75"/>
-                                        <GridViewColumn Header="Count" DisplayMemberBinding="{Binding [1]}" Width="50"/>
-                                        <GridViewColumn Header="Value" DisplayMemberBinding="{Binding [2]}" Width="50"/>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
-                            <Button x:Name="buttonEmptyMainCoinBox" Grid.Row="0" Grid.Column="1" Margin="0,20,0,20" >
-                                <TextBlock Text="Empty Main Coin Box" TextWrapping="Wrap"/>
-                            </Button>
-                            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Text="Inserted Coin Box"/>
-                            <ListView x:Name="listViewInsertedCoinBox" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="Coin" DisplayMemberBinding="{Binding [0]}" Width="75"/>
-                                        <GridViewColumn Header="Count" DisplayMemberBinding="{Binding [1]}" Width="50"/>
-                                        <GridViewColumn Header="Value" DisplayMemberBinding="{Binding [2]}" Width="50"/>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
-                            <Button x:Name="buttonEmptyInsertedCoinBox" Grid.Row="1" Grid.Column="1" Margin="0,20,0,20">
-                                <TextBlock Text="Empty Inserted Coin Box" TextWrapping="Wrap"/>
-                            </Button>
-                        </Grid>
-                    </GroupBox>-->
-
                 </Grid>
             </TabItem>
         </TabControl>
