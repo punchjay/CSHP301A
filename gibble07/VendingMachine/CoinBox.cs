@@ -2,10 +2,10 @@
 // Gibble, Jay ejg2
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Diagnostics;
-using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
 
 namespace VendingMachine
 {
@@ -44,7 +44,7 @@ namespace VendingMachine
         // constructor to create a coin box with some coins in it
         public CoinBox(List<Coin> SeedMoney)
         {
-            box = SeedMoney;        
+            box = SeedMoney;
             // 7.2
             updateCoinBoxDisplayData();
         }

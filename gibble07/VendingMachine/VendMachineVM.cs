@@ -22,14 +22,14 @@ namespace VendingMachine
         public VendMachineVM()
         {
             Rack = new CanRack();
-            MainCoinBox = new CoinBox(new List<Coin> { new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME), new Coin(Coin.Denomination.NICKEL), 
+            MainCoinBox = new CoinBox(new List<Coin> { new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME), new Coin(Coin.Denomination.NICKEL),
             new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME) });
             TempCoinBox = new CoinBox();
             sodaPrice = new PurchasePrice(0.35M);
             _title = $"Please insert {sodaPrice.PriceDecimal:c} for your choice of Soda";
         }
 
-        public void EjectCan(Flavor flavorToBeEjected) 
+        public void EjectCan(Flavor flavorToBeEjected)
         {
             if (TempCoinBox.ValueOf >= sodaPrice.PriceDecimal && !Rack.IsEmpty(flavorToBeEjected))
             {
@@ -59,7 +59,7 @@ namespace VendingMachine
         public string CustomerMessage
         {
             get { return _customerMessage; }
-            set 
+            set
             {
                 _customerMessage = value;
                 //updates view on property changed
