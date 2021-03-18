@@ -18,6 +18,7 @@ namespace VendingMachineWPF
             DataContext = vendingMachine;
             // 7.2
             itemsControlCanRackContents.ItemsSource = vendingMachine.Rack.CanRackDisplayData;
+            itemsControlCanRackContents.ItemsSource = vendingMachine.MainCoinBox.CoinBoxDisplayData;
         }
 
         private void ButtonInsertHalftDollar_Click(object sender, RoutedEventArgs e)

@@ -5,11 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace VendingMachine
 {
     public class CoinBox : INotifyPropertyChanged
     {
+        public ObservableCollection<string[]> CoinBoxDisplayData = new ObservableCollection<string[]>();
+
+        private void updateCoinBoxDisplayData() {
+            CoinBoxDisplayData.Clear();
+        }
+
         private List<Coin> box;
 
         // constructor to create an empty coin box
