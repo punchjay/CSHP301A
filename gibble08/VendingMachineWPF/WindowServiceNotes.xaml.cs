@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Exercise_8._1_Vend_Service_Notes_WPF
+namespace VendingMachineWPF
 {
     /// <summary>
     /// Interaction logic for WindowServiceNotes.xaml

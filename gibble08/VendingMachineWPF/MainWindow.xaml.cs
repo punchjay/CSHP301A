@@ -1,6 +1,5 @@
 ﻿// Exercise 08
 // Gibble, Jay ejg2
-using Exercise_8._1_Vend_Service_Notes_WPF;
 using System.Windows;
 using VendingMachine;
 
