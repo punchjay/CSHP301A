@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Exercise_07._1_Vend_Lib
+namespace VendingMachine
 {
     public class Coin
     {
@@ -124,3 +124,4 @@ namespace Exercise_07._1_Vend_Lib
         }
     }
 }
+

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Exercise_07._1_Vend_Lib
+namespace VendingMachine
 {
     public class VENDBADFLAVORException : Exception
     {

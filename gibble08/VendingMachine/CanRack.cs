@@ -4,16 +4,38 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 
-namespace Exercise_07._1_Vend_Lib
+namespace VendingMachine
 {
     //  This class will represent a can storage rack of the vending machine.  
     //  A can of soda will simply be represented as a number in an array indexed
     //  by the Flavor enumeration (e.g., rack[Flavor.ORANGE] == 1 means 
     //  that there is one can of orange soda in the rack).
-    public class CanRack : INotifyPropertyChanged
+    public class CanRack: INotifyPropertyChanged
     {
+        private Dictionary<Flavor, int> rack = null;
+        public const int EMPTYBIN = 0;
+        public const int BINSIZE = 3;
+        private const int DUMMYARGUMENT = 0;
+
+        // 7.2
         public ObservableCollection<string> CanRackDisplayData = new ObservableCollection<string>();
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void InvokePropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        // Constructor for a can rack. The rack starts out full
+        // (i.e., BINSIZE cans of each flavor).
+        public CanRack()
+        {
+            rack = new Dictionary<Flavor, int>();
+            FillTheCanRack();
+        }
+
+        // 7.2
         private void updateCanRackDisplayData()
         {
             CanRackDisplayData.Clear();
@@ -24,31 +46,11 @@ namespace Exercise_07._1_Vend_Lib
             }
         }
 
+        // 7.2
         private void addRackDataToObservableCollection(Flavor flavorToDisplay, int canCount)
         {
             for (int index = 0; index < canCount; index++)
                 CanRackDisplayData.Add(flavorToDisplay.ToString());
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void InvokePropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private Dictionary<Flavor,int> rack = null;
-        public const int EMPTYBIN = 0; 
-        public const int BINSIZE = 3;
-
-        private const int DUMMYARGUMENT = 0;
-
-        // Constructor for a can rack. The rack starts out full
-        // (i.e., BINSIZE cans of each flavor).
-        public CanRack()
-        {
-            rack = new Dictionary<Flavor,int>();
-            FillTheCanRack();
         }
 
         //  This method adds a can of the specified flavor to the rack.  
@@ -65,11 +67,10 @@ namespace Exercise_07._1_Vend_Lib
                 // convert the string Flavor into the Flavor value
                 Flavor flavorEnumeral = FlavorOps.ToFlavor(FlavorOfCanToBeAdded);
                 rack[flavorEnumeral]++;
-                InvokePropertyChanged("Item[]");
-                updateCanRackDisplayData();
             }
-
-
+            // 7.2
+            InvokePropertyChanged("Item[]");
+            updateCanRackDisplayData();
         }
 
         public void AddACanOf(Flavor FlavorOfCanToBeAdded)
@@ -91,9 +92,10 @@ namespace Exercise_07._1_Vend_Lib
                 // convert the string Flavor into the appropriate Flavor value
                 Flavor flavorEnumeral = FlavorOps.ToFlavor(FlavorOfCanToBeRemoved);
                 rack[flavorEnumeral]--;
-                InvokePropertyChanged("Item[]");
-                updateCanRackDisplayData();
             }
+            // 7.2
+            InvokePropertyChanged("Item[]");
+            updateCanRackDisplayData();
         }
 
         public void RemoveACanOf(Flavor FlavorOfCanToBeRemoved)
@@ -107,8 +109,9 @@ namespace Exercise_07._1_Vend_Lib
             Debug.WriteLine("Filling the can rack");
             foreach (Flavor aFlavor in FlavorOps.AllFlavors)
             {
-                rack[aFlavor] = BINSIZE;                
+                rack[aFlavor] = BINSIZE;
             }
+            // 7.2
             InvokePropertyChanged("Item[]");
             updateCanRackDisplayData();
         }
@@ -119,6 +122,7 @@ namespace Exercise_07._1_Vend_Lib
             Flavor flavorEnumeral = FlavorOps.ToFlavor(FlavorOfBinToBeEmptied);
             Debug.WriteLine("Emptying can rack of flavor {0}", FlavorOfBinToBeEmptied);
             rack[flavorEnumeral] = EMPTYBIN;
+            // 7.2
             InvokePropertyChanged("Item[]");
             updateCanRackDisplayData();
         }
@@ -200,7 +204,7 @@ namespace Exercise_07._1_Vend_Lib
                 {
                     string pluralCan = string.Format(sodaCansLeftOver == -1 ? "" : "s");
                     string pluralWas = string.Format(sodaCansLeftOver == -1 ? "was" : "were");
-                    Debug.WriteLine("{0} Bin Full. {1} can{2} of flavor {0} {3} not placed in vending machine", 
+                    Debug.WriteLine("{0} Bin Full. {1} can{2} of flavor {0} {3} not placed in vending machine",
                         FlavorOfBin, -sodaCansLeftOver, pluralCan, pluralWas);
                 }
                 else if (sodaCansLeftOver > 0)
@@ -211,10 +215,10 @@ namespace Exercise_07._1_Vend_Lib
                         FlavorOfBin, sodaCansLeftOver, pluralCan, pluralWas);
                 }
                 InvokePropertyChanged("Item[]");
+                // 7.2
                 updateCanRackDisplayData();
             }
         }
-
 
         // write out the contents of rack array. For example, one flavor per line with the flavor name and
         // the number of cans of soda of that flavor. In a real system, this function would probably be in a 

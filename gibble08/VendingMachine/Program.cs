@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Exercise_07._1_Vend_Lib
+namespace VendingMachine
 {
     class Program
     {
@@ -9,9 +9,9 @@ namespace Exercise_07._1_Vend_Lib
         {
             PurchasePrice sodaPrice = new PurchasePrice(0.35M);
             CanRack sodaRack = new CanRack();
-            CoinBox changeBox = new CoinBox(new List<Coin> { 
-                new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME), 
-                new Coin(Coin.Denomination.NICKEL), new Coin(Coin.Denomination.QUARTER), 
+            CoinBox changeBox = new CoinBox(new List<Coin> {
+                new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME),
+                new Coin(Coin.Denomination.NICKEL), new Coin(Coin.Denomination.QUARTER),
                 new Coin(Coin.Denomination.QUARTER), new Coin(Coin.Denomination.DIME) });
 
             Console.WriteLine("Welcome to the .NET C# Soda Vending Machine");
@@ -99,3 +99,4 @@ namespace Exercise_07._1_Vend_Lib
         }
     }
 }
+

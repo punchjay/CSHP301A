@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Exercise_07._1_Vend_Lib
+namespace VendingMachine
 {
     public enum Flavor { REGULAR, ORANGE, LEMON }
     public static class FlavorOps
@@ -24,7 +24,7 @@ namespace Exercise_07._1_Vend_Lib
             Flavor result = Flavor.REGULAR;
             if (Enum.IsDefined(typeof(Flavor), FlavorName))
             {
-                result = (Flavor)Enum.Parse(typeof(Flavor),FlavorName);
+                result = (Flavor)Enum.Parse(typeof(Flavor), FlavorName);
             }
             else
             {

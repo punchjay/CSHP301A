@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Can Lemon.jpg" />
+    <None Remove="Resources\Can Orange.jpg" />
+    <None Remove="Resources\Can Regular.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VendingMachine\VendingMachine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Can Lemon.jpg" />
+    <Resource Include="Resources\Can Orange.jpg" />
+    <Resource Include="Resources\Can Regular.jpg" />
+  </ItemGroup>
+
+</Project>

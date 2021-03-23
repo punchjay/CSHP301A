@@ -1,44 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Diagnostics;
-using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
 
-namespace Exercise_07._1_Vend_Lib
+namespace VendingMachine
 {
     public class CoinBox : INotifyPropertyChanged
     {
-
+        // 7.2
         public ObservableCollection<string[]> CoinBoxDisplayData = new ObservableCollection<string[]>();
 
+        // 7.2
         private void updateCoinBoxDisplayData()
         {
             CoinBoxDisplayData.Clear();
-
-            addCoinDataToObservableCollection("Half Dollar", HalfDollarCount,
-                HalfDollarCount * new Coin(Coin.Denomination.HALFDOLLAR).ValueOf);
-            addCoinDataToObservableCollection("Quarter", QuarterCount,
-                QuarterCount * new Coin(Coin.Denomination.QUARTER).ValueOf);
-            addCoinDataToObservableCollection("Dime", DimeCount,
-                DimeCount * new Coin(Coin.Denomination.DIME).ValueOf);
-            addCoinDataToObservableCollection("Nickel", NickelCount,
-                NickelCount * new Coin(Coin.Denomination.NICKEL).ValueOf);
-            addCoinDataToObservableCollection("Total", 
-                HalfDollarCount + QuarterCount + DimeCount + NickelCount,
-                this.ValueOf);
+            addCoinDataToObservableCollection("Half Dollar", HalfDollarCount, HalfDollarCount * new Coin(Coin.Denomination.HALFDOLLAR).ValueOf);
+            addCoinDataToObservableCollection("Quarter", QuarterCount, QuarterCount * new Coin(Coin.Denomination.QUARTER).ValueOf);
+            addCoinDataToObservableCollection("Dime", DimeCount, DimeCount * new Coin(Coin.Denomination.DIME).ValueOf);
+            addCoinDataToObservableCollection("Nickel", NickelCount, NickelCount * new Coin(Coin.Denomination.NICKEL).ValueOf);
+            addCoinDataToObservableCollection("Total", HalfDollarCount + QuarterCount + DimeCount + NickelCount, this.ValueOf);
         }
 
+        // 7.2
         private void addCoinDataToObservableCollection(string coinName, int coinCount, decimal coinValue)
         {
             CoinBoxDisplayData.Add(new string[] { coinName, coinCount.ToString(), $"{coinValue:C}" });
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void InvokePropertyChangedEvent(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private List<Coin> box;
@@ -47,6 +35,7 @@ namespace Exercise_07._1_Vend_Lib
         public CoinBox()
         {
             box = new List<Coin>();
+            // 7.2
             updateCoinBoxDisplayData();
         }
 
@@ -54,6 +43,7 @@ namespace Exercise_07._1_Vend_Lib
         public CoinBox(List<Coin> SeedMoney)
         {
             box = SeedMoney;
+            // 7.2
             updateCoinBoxDisplayData();
         }
 
@@ -63,7 +53,12 @@ namespace Exercise_07._1_Vend_Lib
         // of its defining class
         private static List<Coin.Denomination> reversedCoinList = null;
 
-        
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void InvokePropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         static CoinBox()
         {
@@ -75,7 +70,9 @@ namespace Exercise_07._1_Vend_Lib
         public void Deposit(Coin ACoin)
         {
             box.Add(ACoin);
-            InvokePropertyChangedEvent("ValueOf");
+            InvokePropertyChanged("CanMakeChange");
+            InvokePropertyChanged("ValueOf");
+            // 7.2
             updateCoinBoxDisplayData();
         }
 
@@ -93,8 +90,9 @@ namespace Exercise_07._1_Vend_Lib
                 result = box.Remove(aCoin.First());
             }
 
-            InvokePropertyChangedEvent("CanMakeChange");
-            InvokePropertyChangedEvent("ValueOf");
+            InvokePropertyChanged("CanMakeChange");
+            InvokePropertyChanged("ValueOf");
+            // 7.2
             updateCoinBoxDisplayData();
 
             return result;
@@ -123,18 +121,18 @@ namespace Exercise_07._1_Vend_Lib
                 if (amountLeftToRemove >= Coin.ValueOfCoin(denominationEnumeral))
                 {
                     amountOfThisCoinRemoved = removeCoinDenomiation(
-                        amountLeftToRemove, denominationEnumeral);
+                    amountLeftToRemove, denominationEnumeral);
                     amountLeftToRemove -= amountOfThisCoinRemoved;
                     amountRemoved += amountOfThisCoinRemoved;
                 }
 
             }
-            Debug.WriteLine("AmountRemoved {0:c}, AmountToRemove {1:c}", amountRemoved, AmountToRemove);
 
-            InvokePropertyChangedEvent("ValueOf");
-            InvokePropertyChangedEvent("CanMakeChange");
+            InvokePropertyChanged("CanMakeChange");
+            InvokePropertyChanged("ValueOf");
+            // 7.2
             updateCoinBoxDisplayData();
-
+            Debug.WriteLine("AmountRemoved {0:c}, AmountToRemove {1:c}", amountRemoved, AmountToRemove);
             return amountRemoved == AmountToRemove;
         }
 
@@ -198,9 +196,7 @@ namespace Exercise_07._1_Vend_Lib
                     break;
                 }
             }
-
-            InvokePropertyChangedEvent("CanMakeChange");
-            InvokePropertyChangedEvent("ValueOf");
+            // 7.2
             updateCoinBoxDisplayData();
 
             return amountRemoved;
@@ -301,9 +297,12 @@ namespace Exercise_07._1_Vend_Lib
                 Destination.Deposit(box[0]);
                 this.box.Remove(box[0]);
             }
-            InvokePropertyChangedEvent("CanMakeChange");
-            InvokePropertyChangedEvent("ValueOf");
+
+            InvokePropertyChanged("CanMakeChange");
+            InvokePropertyChanged("ValueOf");
+            // 7.2
             updateCoinBoxDisplayData();
+
             return result;
         }
 
@@ -364,9 +363,12 @@ namespace Exercise_07._1_Vend_Lib
             {
                 result = false;
             }
-            InvokePropertyChangedEvent("CanMakeChange");
-            InvokePropertyChangedEvent("ValueOf");
+
+            InvokePropertyChanged("CanMakeChange");
+            InvokePropertyChanged("ValueOf");
+            // 7.2
             updateCoinBoxDisplayData();
+
             return result;
         }
 

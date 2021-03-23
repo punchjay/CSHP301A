@@ -1,8 +1,7 @@
-﻿namespace Exercise_07._1_Vend_Lib
+﻿namespace VendingMachine
 {
-    public class Can
+    class Can
     {
-
         public readonly Flavor TheFlavor = Flavor.REGULAR;
 
         public Can()
@@ -13,7 +12,5 @@
         {
             TheFlavor = AFlavor;
         }
-
-
     }
 }

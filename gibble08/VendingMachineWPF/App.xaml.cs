@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Ex_6._2_Vend_WPF
+namespace VendingMachineWPF
 {
     /// <summary>
     /// Interaction logic for App.xaml
