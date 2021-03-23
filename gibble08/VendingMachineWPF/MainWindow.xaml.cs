@@ -17,6 +17,7 @@ namespace VendingMachineWPF
             InitializeComponent();
             DataContext = vendingMachine;
             itemsControlCanRackContents.ItemsSource = vendingMachine.Rack.CanRackDisplayData;
+            listViewInsertedCoinBox.ItemsSource = vendingMachine.TempCoinBox.CoinBoxDisplayData;
             listViewMainCoinBox.ItemsSource = vendingMachine.MainCoinBox.CoinBoxDisplayData;
         }
 
@@ -70,6 +71,11 @@ namespace VendingMachineWPF
         private void ButtonEmptyMainCoinBox_Click(object sender, RoutedEventArgs e)
         {
             vendingMachine.MainCoinBox.Withdraw(vendingMachine.MainCoinBox.ValueOf);
+        }
+
+        private void buttonEmptyInsertedCoinBox_Click(object sender, RoutedEventArgs e)
+        {
+            vendingMachine.TempCoinBox.Withdraw(vendingMachine.TempCoinBox.ValueOf);
         }
 
         private void ButtonServiceNotes_Click(object sender, RoutedEventArgs e)
