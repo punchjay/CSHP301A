@@ -73,7 +73,7 @@ namespace VendingMachineWPF
             vendingMachine.MainCoinBox.Withdraw(vendingMachine.MainCoinBox.ValueOf);
         }
 
-        private void buttonEmptyInsertedCoinBox_Click(object sender, RoutedEventArgs e)
+        private void ButtonEmptyInsertedCoinBox_Click(object sender, RoutedEventArgs e)
         {
             vendingMachine.TempCoinBox.Withdraw(vendingMachine.TempCoinBox.ValueOf);
         }

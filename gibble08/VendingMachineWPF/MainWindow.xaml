@@ -80,7 +80,7 @@
                                         </GridView>
                                     </ListView.View>
                                 </ListView>
-                                <Button x:Name="buttonEmptyInsertedCoinBox" Background="{x:Null}" HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="12" Margin="0,15,0,0" Width="146" Click="buttonEmptyInsertedCoinBox_Click">
+                                <Button x:Name="buttonEmptyInsertedCoinBox" Background="{x:Null}" HorizontalAlignment="Left" FontFamily="Segoe UI" FontSize="12" Margin="0,15,0,0" Width="146" Click="ButtonEmptyInsertedCoinBox_Click">
                                     <TextBlock Text="Empty Main Coin Box" TextWrapping="Wrap"/>
                                 </Button>
                                 <Button x:Name="buttonServiceNotes" Background="{x:Null}" FontFamily="Segoe UI" FontSize="12" Width="100" Margin="0,10,35,0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="ButtonServiceNotes_Click">
