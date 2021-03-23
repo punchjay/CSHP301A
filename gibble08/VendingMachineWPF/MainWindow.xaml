@@ -14,7 +14,7 @@
     </Window.Resources>
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
         <TabControl>
-            <TabItem Header="Vending Machine 7.2" Background="{x:Null}">
+            <TabItem Header="Vending Machine 8.2" Background="{x:Null}">
                 <Grid Height="430">
                     <Label Content="{Binding Title, FallbackValue=Insert Your Coins Here!}" HorizontalAlignment="Center" Margin="0,1,0,0" VerticalAlignment="Top" FontSize="24" FontFamily="Segoe UI Light" />
                     <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="800">
