@@ -16,10 +16,12 @@
                     <Separator />
                     <MenuItem x:Name="menuItemExit" Header="_Exit" Click="MenuItemExit_Click" />
                 </MenuItem>
-                <!--<MenuItem x:Name="menuItemFilenames" Header="File_names" Click="MenuItemFilenames_Click"/>-->
+                <MenuItem x:Name="menuItemFilenames" Header="File_names" Click="MenuItemFilenames_Click"/>
             </Menu>
             <ScrollViewer>
-                <StackPanel x:Name="stackPanelServiceNoteHolder" />
+                <StackPanel x:Name="stackPanelServiceNoteHolder">
+                    <!-- Service notes in the form of TextBoxes will be added here in code-behind -->
+                </StackPanel>
             </ScrollViewer>
         </DockPanel>
     </Grid>

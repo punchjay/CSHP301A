@@ -1,7 +1,8 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.IO;
-//using System.Text;
-//using System.Text.RegularExpressions;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -66,24 +67,24 @@ namespace VendingMachineWPF
             Close();
         }
 
-        //private void MenuItemFilenames_Click(object sender, RoutedEventArgs e)
-        //{
-        //    StringBuilder allNoteText = new StringBuilder();
-        //    foreach (TextBox tb in stackPanelServiceNoteHolder.Children)
-        //    {
-        //        allNoteText.Append(tb.Text);
-        //    }
+        private void MenuItemFilenames_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder allNoteText = new StringBuilder();
+            foreach (TextBox tb in stackPanelServiceNoteHolder.Children)
+            {
+                allNoteText.Append(tb.Text);
+            }
 
-        //    Regex findFilenames = new Regex(@"([a-zA-Z]:)?(\\[.a-zA-Z0-9_-]+)+\\?");
+            Regex findFilenames = new Regex(@"([a-zA-Z]:)?(\\[.a-zA-Z0-9_-]+)+\\?");
 
-        //    string result = null;
-        //    foreach (var fileMatch in findFilenames.Matches(allNoteText.ToString()))
-        //    {
-        //        result += fileMatch + Environment.NewLine;
-        //    }
+            string result = null;
+            foreach (var fileMatch in findFilenames.Matches(allNoteText.ToString()))
+            {
+                result += fileMatch + Environment.NewLine;
+            }
 
-        //    MessageBox.Show(result,
-        //        "All Filenames found in open Service Notes files");
-        //}
+            MessageBox.Show(result,
+                "All Filenames found in open Service Notes files");
+        }
     }
 }
